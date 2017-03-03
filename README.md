@@ -2,6 +2,7 @@
 
 This is a copy of the starter kit for Hack Oregon front-end development using React + Redux.
 
+
 #### Getting Started
 1. Get [Node 6.5 +](https://nodejs.org) - I recommend using [Node Version Manager](https://github.com/creationix/nvm).
 2. `git clone https://github.com/hackoregon/hackor-frontend-starter.git`.
