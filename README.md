@@ -1,6 +1,10 @@
+
 ## Hack OR Team Homeless Front-End
 
 This is a copy of the starter kit for Hack Oregon front-end development using React + Redux.
+
+S3 staging http://hacko-homelessness-staging.s3-website-us-west-2.amazonaws.com/
+Travis build https://travis-ci.org/hackoregon/teamHomelessness-frontend
 
 #### Getting Started
 1. Get [Node 6.5 +](https://nodejs.org) - I recommend using [Node Version Manager](https://github.com/creationix/nvm).
