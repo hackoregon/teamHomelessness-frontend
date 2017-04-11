@@ -1,0 +1,78 @@
+.HomelessPopulation {
+  text-align: center;
+}
+
+.recharts-cartesian-grid-vertical line:last-child { 
+  display: none
+}
+
+.recharts-cartesian-grid-vertical line {
+  stroke: #AAA4AB;
+  stroke-width:1;
+}
+
+.selector {
+  text-align: left;
+  padding-bottom: 13px;
+}
+
+.selector select  {
+  color: #726371;
+  background:none;
+  font-size: 1.4em;
+}
+
+.flexWrap .recharts-legend-wrapper {
+  position: static!important;
+}
+
+.flexWrap {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.SubMenu {
+  text-align: center;
+}
+
+.SubMenu li {
+  display: inline;
+  padding: 10px;
+  color: #726371;
+}
+
+.SubMenu a {
+  display: inline-block;
+  padding:5px;
+}
+
+.SubMenu a:hover {
+  color: black;
+  cursor: pointer;
+}
+
+.SubMenu a.active {
+  font-weight: bold;
+  border-bottom: 4px solid #726371; 
+}
+
+@media screen and (min-width: 580px) {
+
+  .recharts-wrapper>.recharts-legend-wrapper {
+    top:12px!important;
+  }
+
+  .flexWrap .recharts-default-legend {
+    text-align: right!important;
+  }
+
+  .flexWrap {
+    flex-direction: row;
+  }
+
+  .flexWrap>div {
+    flex: 1;
+  }
+
+}
