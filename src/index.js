@@ -41,6 +41,16 @@ export default function createRoutes(store) {
       },
     },
     {
+      path: '/migration',
+      name: 'migrationpage',
+      getComponent(nextState, cb) {
+        const renderRoute = loadModule(cb);
+        require.ensure([], require => Promise.resolve(require('./components/Migration'))
+          .then(renderRoute)
+          .catch(errorLoading));
+      },
+    },
+    {
       path: '*',
       name: 'notfoundpage',
       getComponent(nextState, cb) {
