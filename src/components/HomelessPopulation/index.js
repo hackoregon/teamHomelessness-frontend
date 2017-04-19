@@ -1,51 +1,39 @@
 /* eslint-disable react/jsx-boolean-value */
 import React from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Text, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, Text, Legend, ResponsiveContainer } from 'recharts';
 import styles from './styles.css';
 
-// TODO
+// TODO - Wire-up w/ redux
 const propsData = [
+  { name: 'People of Color', 'General Population': 70, Homeless: 30 },
   { name: 'White', 'General Population': 70, Homeless: 30 },
-  { name: 'Latino', 'General Population': 10, Homeless: 20 },
-  { name: 'Black', 'General Population': 10, Homeless: 10 },
-  { name: 'Asian', 'General Population': 9, Homeless: 20 },
-  { name: 'American Indian', 'General Population': 1, Homeless: 10 },
+  { name: 'Not Reported', 'General Population': 10, Homeless: 20 },
 ];
+const propsYears = [2011, 2013, 2015];
+const propsActive = 2011;
 const propsCateg = ['Ethnicity', 'Veteran Status', 'Disability', 'Age', 'Gender'];
-const propsSelected = 'Age';
+const propsSelected = 'Veteran Status';
 
 
-const toPercent = val => `${val}%`;
+const COLORS = ['#75568D', '#e3dde8'];
 
 const valueLabel = options => (
-  <Text {...options} fill={'#AAA4AB'}>{`${options.value}%`}</Text>
+  <Text {...options} fill={'#201024'} >{`${options.value}%`}</Text>
 );
 
 const axisLabel = options => (
-  <Text {...options} fill={'#726371'} y={options.y - 35} width={200}>
+  <Text {...options} fill={'#201024'} y={options.y - 45} width={200} style={{ fontWeight: 'bold' }}>
     {options.payload.value}
   </Text>
 );
 
-const SubMenu = contents => (
-  <ul className="SubMenu">
-    {
-      contents.categories.map((item) => {
-        const active = item === contents.selected ? 'active' : '';
-        return (
-          <li key={item}>
-            <a className={`${active} subLink`}>{item}</a>
-          </li>
-        );
-      })
-    }
-  </ul>
-);
 
-const RenderLegend = options => (
-  <div className="flexWrap">
+const HomelessPopulation = props => (
+  <div className="HomelessPopulation homelesspopulation-container dataViz-container-500">
+    <h2>Compare the population of Multnomah County in 2015 to 
+    the homeless</h2>
     <div className="selector">
-      <select name="category" value={options.selected}>
+      <select name="category" value={propsSelected}>
         {
           propsCateg.map(item => (
             <option key={item} value={item} >{item}</option>
@@ -53,73 +41,65 @@ const RenderLegend = options => (
         }
       </select>
     </div>
-    <Legend payload={options.payload}  iconSize={18} verticalAlign={'bottom'} wrapperStyle={{ bottom: 0, right: 0, left: 0 }} />
-  </div>
-);
-
-
-const HomelessPopulation = props => (
-  <div className="HomelessPopulation">
-    <h1>The Homeless Population</h1>
-    <h2>Compare the population of Multnomah County in 2015 to 
-    the homeless, and those in poverty</h2>
-    <ResponsiveContainer width="85%" height={550} >
-      <BarChart 
+    <ResponsiveContainer width="100%" height={'100%'} minHeight={450} >
+      <BarChart
         data={propsData}
         layout={'vertical'}
-        barCategoryGap={'25%'}
-        margin={{ top: 60, right: 10, left: 10, bottom: 5 }}
+        margin={{ top: 65, right: 10, left: 10, bottom: 0 }}
       >
         <Legend 
-          wrapperStyle={{ top: 0, right: 0, left: 0, margin: '2px auto 20px auto' }}
           verticalAlign={'bottom'}
-          content={<RenderLegend selected={propsSelected} />}
+          align={'center'}
+          layout={'vertical'}
+          iconSize={18}
+          wrapperStyle={{ top: 0 }}
         />
         <XAxis 
           type="number"
-          orientation="top"
-          axisLine={false}
+          axisLine={false} 
           tickLine={false}
-          ticks={[25, 50, 75, 100]}
-          interval="preserveEnd"
-          domain={[0, 100]}
-          tickCount={5}
-          tick={{ fill: '#AAA4AB' }}
-          tickFormatter={toPercent}
+          tick={false}
         />
         <YAxis 
           type="category" 
           tickLine={false}
           dataKey="name"
           tick={axisLabel}
-          padding={{ top: 10 }}  
           mirror={true}
           axisLine={false}
         />
-        <CartesianGrid 
-          strokeDasharray="5, 5" 
-          horizontal={false}
-        />
         <Bar 
           dataKey="General Population" 
-          fill="#F6A623" 
+          fill={COLORS[1]} 
           label={valueLabel}
-          legendType={'circle'} 
+          legendType={'circle'}
+          barSize={24}
         />
         <Bar 
           dataKey="Homeless" 
-          fill="#29507D" 
+          fill={COLORS[0]} 
           label={valueLabel}  
-          legendType={'circle'} 
-        />
-        <Tooltip 
-          formatter={toPercent}
-          cursor={{ fill: 'none' }}
+          legendType={'circle'}
+          barSize={29}
         />
       </BarChart>
     </ResponsiveContainer>
-    <SubMenu categories={propsCateg} selected={propsSelected} />
+    <div className="Years-List">
+      <ul>
+        {
+          propsYears.map((item) => {
+            const active = item === propsActive ? 'active' : '';
+            return (
+              <li key={item}>
+                <a className={`${active}`}>{item}</a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </div>
   </div>
 );
 
 export default HomelessPopulation;
+    

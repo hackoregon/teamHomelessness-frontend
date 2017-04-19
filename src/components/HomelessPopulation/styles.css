@@ -1,78 +1,110 @@
-.HomelessPopulation {
+.HomelessPopulation .homelesspopulation-container {
+  text-align: center;
+  max-width: 95%;
+  margin: auto;
+}
+
+.dataViz-container-500 {
+  max-width: 95%;
+  margin: auto;
   text-align: center;
 }
 
-.recharts-cartesian-grid-vertical line:last-child { 
-  display: none
-}
-
-.recharts-cartesian-grid-vertical line {
-  stroke: #AAA4AB;
-  stroke-width:1;
-}
-
-.selector {
-  text-align: left;
+.HomelessPopulation .selector {
   padding-bottom: 13px;
 }
 
-.selector select  {
-  color: #726371;
+.HomelessPopulation .selector select  {
+  appearance: none;
+  color: #201024;
   background:none;
-  font-size: 1.4em;
+  border: 1px solid #d1d1d1;
+  border-radius: 5px;
+  padding: 4px 43px 4px 18px;
+  font-size: 1.3em;
+  background: transparent url('./br_down.png') no-repeat;
+  background-position: bottom 10px right 20px;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2), 0 2px 8px 0 rgba(0, 0, 0, 0.19);
 }
 
-.flexWrap .recharts-legend-wrapper {
-  position: static!important;
+.HomelessPopulation li.recharts-legend-item {
+  text-align: left;
 }
 
-.flexWrap {
+
+.HomelessPopulation .recharts-legend-wrapper li {
+  padding: 2px 0px;
+}
+
+.HomelessPopulation .Years-List ul {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
 }
 
-
-.SubMenu {
-  text-align: center;
-}
-
-.SubMenu li {
+.HomelessPopulation .Years-List li {
   display: inline;
   padding: 10px;
-  color: #726371;
+  color: #AAA4AB;
+  flex: inherit;
 }
 
-.SubMenu a {
+.HomelessPopulation .Years-List a {
   display: inline-block;
   padding:5px;
+  font-size: 1.3em;
 }
 
-.SubMenu a:hover {
-  color: black;
+.HomelessPopulation .Years-List a:hover,
+.HomelessPopulation .Years-List a:focus {
+  color: #201024;
   cursor: pointer;
 }
 
-.SubMenu a.active {
+.HomelessPopulation .Years-List a.active {
   font-weight: bold;
-  border-bottom: 4px solid #726371; 
+  color: #201024; 
 }
+
+.HomelessPopulation .Years-List {
+  color:#726371;
+  font-weight: bold;
+  margin-top: -50px;
+  z-index: 99;
+  position: relative;
+}
+
+.HomelessPopulation .Years-List a.active {
+  color: #201024;
+  border-bottom: 3px solid #201024;
+}
+
 
 @media screen and (min-width: 580px) {
 
-  .recharts-wrapper>.recharts-legend-wrapper {
-    top:12px!important;
+  .HomelessPopulation .Years-List ul {
+    justify-content: center!important;
   }
 
-  .flexWrap .recharts-default-legend {
-    text-align: right!important;
+  .HomelessPopulation .recharts-default-legend {
+    display: flex;
   }
 
-  .flexWrap {
-    flex-direction: row;
+  .HomelessPopulation .recharts-legend-wrapper {
+    left:20px!important;
+  }
+  
+  .HomelessPopulation .recharts-legend-wrapper li {
+    width: 160px;
   }
 
-  .flexWrap>div {
-    flex: 1;
+  .HomelessPopulation .selector {
+    text-align: left;
+    padding-left: 20px;
+  }
+
+  .dataViz-container-500 {
+    max-width: 500px;
   }
 
 }
+
