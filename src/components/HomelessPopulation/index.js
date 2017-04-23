@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-boolean-value */
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { BarChart, Bar, XAxis, YAxis, Text, Legend, ResponsiveContainer } from 'recharts';
 import camelcase from 'camelcase';
 import styles from './styles.css';
@@ -14,17 +15,14 @@ import {
 } from '../../state/Population/selectors';
 
 const COLORS = ['#75568D', '#e3dde8'];
-
 const valueLabel = options => (
   <Text {...options} fill={'#201024'} >{`${options.value}%`}</Text>
 );
-
 const axisLabel = options => (
   <Text {...options} fill={'#201024'} y={options.y - 45} width={200} style={{ fontWeight: 'bold' }}>
     {options.payload.value}
   </Text>
 );
-
 
 class HomelessPopulation extends React.Component {
   constructor() {
@@ -112,9 +110,14 @@ class HomelessPopulation extends React.Component {
   }
 }
 
-// HomelessPopulation.propTypes = {
-//   ethnicityData
-// }
+HomelessPopulation.propTypes = {
+  loadData: PropTypes.function,
+  ethnicity: PropTypes.array,
+  veteranStatus: PropTypes.array,
+  disability: PropTypes.array,
+  age: PropTypes.array,
+  gender: PropTypes.array,
+};
 
 const mapDispatchToProps = dispatch => ({
   loadData: () => fetchPopulationData(dispatch),
