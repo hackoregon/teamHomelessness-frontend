@@ -8,8 +8,6 @@ export const NAME = 'population';
 export const NON_ACTION_TYPE = '30px';
 
 export const INITIAL_STATE = {
-  data: null,
-  error: null,
 };
 
 const GET_ETHNICITY = 'HOMELESSNESS/POPULATION/ETHNICITY/GET';

@@ -21,7 +21,7 @@ export const veteranStatus = state => filterByName(
 );
 export const disability = state => filterByName(
   root(state).ageGenderData || [],
-  ['disability'],
+  ['disablity'],
 );
 export const age = state => filterByName(
   root(state).ageGenderData || [],

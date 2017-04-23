@@ -2,6 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { BarChart, Bar, XAxis, YAxis, Text, Legend, ResponsiveContainer } from 'recharts';
+import camelcase from 'camelcase';
 import styles from './styles.css';
 import { fetchPopulationData } from '../../state/Population/actions';
 import {
@@ -11,12 +12,6 @@ import {
   age,
   gender,
 } from '../../state/Population/selectors';
-
-// TODO - Wire-up w/ redux
-
-const propsCateg = ['Ethnicity', 'Veteran Status', 'Disability', 'Age', 'Gender'];
-const propsSelected = 'Veteran Status';
-
 
 const COLORS = ['#75568D', '#e3dde8'];
 
@@ -32,8 +27,24 @@ const axisLabel = options => (
 
 
 class HomelessPopulation extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      categories: [
+        'Ethnicity',
+        'Veteran Status',
+        'Disability',
+        'Age',
+        'Gender',
+      ],
+      value: 'Ethnicity',
+    };
+  }
   componentDidMount() {
     this.props.loadData();
+  }
+  handleChange(event) {
+    this.setState({ value: event.target.value });
   }
   render() {
     return (
@@ -41,17 +52,21 @@ class HomelessPopulation extends React.Component {
         <h2>Compare the population of Multnomah County in 2015 to
     the homeless</h2>
         <div className="selector">
-          <select name="category" value={propsSelected}>
+          <select
+            name="category"
+            value={this.state.value}
+            onChange={event => this.handleChange(event)}
+          >
             {
-          propsCateg.map(item => (
-            <option key={item} value={item} >{item}</option>
-          ))
-        }
+              this.state.categories.map(item => (
+                <option key={item} value={item}>{item}</option>
+              ))
+            }
           </select>
         </div>
         <ResponsiveContainer width="100%" height={'100%'} minHeight={450} >
           <BarChart
-            data={this.props.age}
+            data={this.props[camelcase(this.state.value)]}
             layout={'vertical'}
             margin={{ top: 65, right: 10, left: 10, bottom: 0 }}
           >
@@ -104,10 +119,6 @@ class HomelessPopulation extends React.Component {
 const mapDispatchToProps = dispatch => ({
   loadData: () => fetchPopulationData(dispatch),
 });
-//
-// const filterData = (data, keys) => data.filter(
-//   element => keys.includes(element.name),
-// );
 
 const mapStateToProps = state => ({
   ethnicity: ethnicity(state),
@@ -117,4 +128,6 @@ const mapStateToProps = state => ({
   gender: gender(state),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomelessPopulation);
+export default connect(
+  mapStateToProps, mapDispatchToProps,
+)(HomelessPopulation);
