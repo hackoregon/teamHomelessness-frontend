@@ -4,13 +4,9 @@ import { connect } from 'react-redux';
 import { BarChart, Bar, XAxis, YAxis, Text, Legend, ResponsiveContainer } from 'recharts';
 import styles from './styles.css';
 import { fetchPopulationData } from '../../state/Population/actions';
+import { ethnicityChart } from '../../state/Population/selectors';
 
 // TODO - Wire-up w/ redux
-const propsData = [
-  { name: 'People of Color', 'General Population': 70, Homeless: 30 },
-  { name: 'White', 'General Population': 70, Homeless: 30 },
-  { name: 'Not Reported', 'General Population': 10, Homeless: 20 },
-];
 
 const propsCateg = ['Ethnicity', 'Veteran Status', 'Disability', 'Age', 'Gender'];
 const propsSelected = 'Veteran Status';
@@ -49,7 +45,7 @@ class HomelessPopulation extends React.Component {
         </div>
         <ResponsiveContainer width="100%" height={'100%'} minHeight={450} >
           <BarChart
-            data={propsData}
+            data={this.props.ethnicityChart}
             layout={'vertical'}
             margin={{ top: 65, right: 10, left: 10, bottom: 0 }}
           >
@@ -75,14 +71,14 @@ class HomelessPopulation extends React.Component {
               axisLine={false}
             />
             <Bar
-              dataKey="General Population"
+              dataKey="general"
               fill={COLORS[1]}
               label={valueLabel}
               legendType={'circle'}
               barSize={24}
             />
             <Bar
-              dataKey="Homeless"
+              dataKey="homeless"
               fill={COLORS[0]}
               label={valueLabel}
               legendType={'circle'}
@@ -102,9 +98,13 @@ class HomelessPopulation extends React.Component {
 const mapDispatchToProps = dispatch => ({
   loadData: () => fetchPopulationData(dispatch),
 });
+//
+// const filterData = (data, keys) => data.filter(
+//   element => keys.includes(element.name),
+// );
 
 const mapStateToProps = state => ({
-  ethnicityData: state.population.ethnicityData,
+  ethnicityChart: ethnicityChart(state),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomelessPopulation);
