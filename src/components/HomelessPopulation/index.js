@@ -4,7 +4,13 @@ import { connect } from 'react-redux';
 import { BarChart, Bar, XAxis, YAxis, Text, Legend, ResponsiveContainer } from 'recharts';
 import styles from './styles.css';
 import { fetchPopulationData } from '../../state/Population/actions';
-import { ethnicityChart } from '../../state/Population/selectors';
+import {
+  ethnicity,
+  veteranStatus,
+  disability,
+  age,
+  gender,
+} from '../../state/Population/selectors';
 
 // TODO - Wire-up w/ redux
 
@@ -45,7 +51,7 @@ class HomelessPopulation extends React.Component {
         </div>
         <ResponsiveContainer width="100%" height={'100%'} minHeight={450} >
           <BarChart
-            data={this.props.ethnicityChart}
+            data={this.props.age}
             layout={'vertical'}
             margin={{ top: 65, right: 10, left: 10, bottom: 0 }}
           >
@@ -104,7 +110,11 @@ const mapDispatchToProps = dispatch => ({
 // );
 
 const mapStateToProps = state => ({
-  ethnicityChart: ethnicityChart(state),
+  ethnicity: ethnicity(state),
+  veteranStatus: veteranStatus(state),
+  disability: disability(state),
+  age: age(state),
+  gender: gender(state),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomelessPopulation);
