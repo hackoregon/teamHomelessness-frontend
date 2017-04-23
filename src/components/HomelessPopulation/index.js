@@ -1,10 +1,11 @@
-/* eslint-disable react/jsx-boolean-value */
+/* eslint-disable react/jsx-boolean-value, react/no-unused-prop-types */
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { BarChart, Bar, XAxis, YAxis, Text, Legend, ResponsiveContainer } from 'recharts';
 import camelcase from 'camelcase';
-import styles from './styles.css';
+import styles from './styles.css'; // eslint-disable-line no-unused-vars
+
 import { fetchPopulationData } from '../../state/Population/actions';
 import {
   ethnicity,
@@ -86,7 +87,7 @@ class HomelessPopulation extends React.Component {
               tickLine={false}
               dataKey="name"
               tick={axisLabel}
-              mirror={true}
+              mirror
               axisLine={false}
             />
             <Bar
