@@ -23,3 +23,13 @@ export const compareAgeGenderApi = () => homelessGet('/pitacs')
       general: element.acs_percent,
     }))
   ));
+
+export const typesOfSheltersApi = () => homelessGet('/individuals')
+  .then(data => (
+    data.map(element => ({
+      name: element.sheltertype,
+      value: element.count,
+      year: element.year,
+      age: element.age,
+    }))
+  ));
