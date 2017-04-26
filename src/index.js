@@ -29,6 +29,16 @@ export default function createRoutes() {
       },
     },
     {
+      path: '/definition',
+      name: 'definitionpage',
+      getComponent(nextState, cb) {
+        const renderRoute = loadModule(cb);
+        require.ensure([], require => Promise.resolve(require('./components/Definition'))
+          .then(renderRoute)
+          .catch(errorLoading));
+      },
+    },
+    {
       path: '*',
       name: 'notfoundpage',
       getComponent(nextState, cb) {
