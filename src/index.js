@@ -19,6 +19,16 @@ export default function createRoutes() {
       },
     },
     {
+      path: '/unaccompanied-youth',
+      name: 'unaccompaniedyouthpage',
+      getComponent(nextState, cb) {
+        const renderRoute = loadModule(cb);
+        require.ensure([], require => Promise.resolve(require('./components/UnaccompaniedYouth'))
+        .then(renderRoute)
+        .catch(errorLoading));
+      },
+    },
+    {
       path: '/migration',
       name: 'migrationpage',
       getComponent(nextState, cb) {
