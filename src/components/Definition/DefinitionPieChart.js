@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { PieChart, Pie, ResponsiveContainer, Text, Cell, Legend } from 'recharts';
+import CustomPieLegend from './CustomPieLegend';
 
 const findPercentage = (val, arr) => {
   const total = arr.reduce((acc, cur) => acc + cur.value, 0);
@@ -30,7 +31,7 @@ const pieLabel = (options) => {
       {...options}
       x={options.cx}
       y={options.cy}
-      fontSize={28}
+      fontSize={30}
       fill={'black'}
       style={{ fontWeight: 'bold' }}
       textAnchor={'middle'}
@@ -42,28 +43,43 @@ const pieLabel = (options) => {
   );
 };
 
+
 class DefinitionPieChart extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       year: 2015,
-    };  
+      activeValue: props.initialValue,
+    };
+
+    this.updateCategory = this.updateCategory.bind(this);
+    this.cleanData = this.cleanData.bind(this);  
   }
 
-  render() {
-    const cleanedData = this.props.data
-      .filter(item => item.year === this.state.year)
+  cleanData(data) {
+    return data.filter(item => item.year === this.state.year)
       .map((item, idx, arr) => (
         { ...item,
           name: this.props.categories[item.name], 
-          label: item.name === getKeyByValue(this.props.categories, this.props.activeValue) 
-          || false, 
+          label: item.name === getKeyByValue(this.props.categories, 
+            this.state.activeValue) || false, 
           value: findPercentage(item.value, arr), 
         }
-      ));
+      ));  
+  }
 
+  updateCategory(val) {
+    if (val !== this.state.activeValue) {
+      this.setState({ activeValue: val });
+    }
+  }
+  
+  render() {
     return (
       <div className="dataViz-container-800" style={{ marginBottom: '65px' }} >
+        <div className="Definition-container">
+          {this.props.content[this.state.activeValue]}
+        </div>
         <div className="Definition-List">
           <ul>
             {
@@ -92,17 +108,18 @@ class DefinitionPieChart extends React.Component {
             <Pie 
               startAngle={180} 
               endAngle={0} 
-              data={cleanedData}
+              data={this.cleanData(this.props.data)}
               cy={'100%'}
               labelLine={false} 
               innerRadius={'105%'} 
               outerRadius={'185%'}
               fill="#e3dde8"
+              animationDuration={900}
               label={pieLabel} 
             >
               {
-                cleanedData.map((entry) => {
-                  const color = entry.name === this.props.activeValue
+                this.cleanData(this.props.data).map((entry) => {
+                  const color = entry.name === this.state.activeValue
                     ? this.props.colors[0] 
                     : this.props.colors[1];
                   return <Cell fill={color} key={entry.value} />;
@@ -110,8 +127,13 @@ class DefinitionPieChart extends React.Component {
               }
             </Pie>
             <Legend 
-              iconType={'circle'}
-              wrapperStyle={{ bottom: '-55px' }}
+              wrapperStyle={{ bottom: '-75px' }}
+              content={
+                <CustomPieLegend 
+                  updateCategory={this.updateCategory} 
+                  active={this.state.activeValue} 
+                />
+              }
             />
           </PieChart>
         </ResponsiveContainer>
@@ -123,8 +145,9 @@ class DefinitionPieChart extends React.Component {
 DefinitionPieChart.propTypes = {
   colors: PropTypes.array,
   categories: PropTypes.object,
-  activeValue: PropTypes.string,
+  initialValue: PropTypes.string,
   data: PropTypes.array,
+  content: PropTypes.object,
 };
 
 export default DefinitionPieChart;

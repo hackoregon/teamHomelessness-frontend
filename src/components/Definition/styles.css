@@ -14,15 +14,26 @@
 
 .Definition-container p {
   text-align: left;
+  max-width: 400px;
+  margin: 0 auto;
 }
 
-.Definition-container.top-spacer {
+div.top-spacer {
   margin-top:9em;
 }
 
 .recharts-legend-item {
   margin-right: 20px!important;
-  margin-top: 3px;
+  margin-top: 9px;
+  cursor: pointer;
+}
+
+.recharts-legend-item.active {
+  color: black;
+}
+
+.recharts-legend-item:hover {
+  color: black;
 }
 
 .Definition-List ul {
@@ -46,23 +57,23 @@
 }
 
 .Definition-List a:hover {
-  color: black;
+  color: #201024;
   cursor: pointer;
 }
 
 .Definition-List a.active {
   font-weight: bold;
-  color: black; 
+  color: #201024; 
 }
 
 .Definition-List {
-  color:#726371;
+  color:#d4d5d6;
   font-weight: bold;
 }
 
 .Definition-List a.active {
-  color: black;
-  border-bottom: 3px solid black;
+  color: #201024;
+  border-bottom: 3px solid #201024;
 }
 
 @media screen and (min-width: 580px) {
@@ -71,7 +82,7 @@
   }
 
   .Definition .recharts-legend-wrapper {
-    bottom: -45px!important;  
+    bottom: -55px!important;  
   }
 
   .recharts-legend-item {

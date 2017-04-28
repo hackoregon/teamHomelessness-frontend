@@ -7,16 +7,23 @@ import { fetchDefinitionData } from '../../state/Definition/actions';
 import DefinitionPieChart from './DefinitionPieChart';
 import { shelterType } from '../../state/Definition/selectors';
 
-const propsData2 = [
-  { name: '2015PitSurvey', value: 31.7, year: 2015 },
-  { name: 'doubledUp', value: 68.3, year: 2015 },
-  { name: '2015PitSurvey', value: 35.7, year: 2011 },
-  { name: 'doubledUp', value: 64.3, year: 2011 }, 
-  { name: '2015PitSurvey', value: 41.7, year: 2013 },
-  { name: 'doubledUp', value: 58.3, year: 2013 },  
+import TransitionalHousing from './TransitionalHousing';
+import EmergencyShelter from './EmergencyShelter';
+import Unsheltered from './Unsheltered';
+import PITSurvey from './PITSurvey';
+import DoubledUp from './DoubledUp';
+
+
+const pitSurveyStaticData = [
+  { name: '2015PitSurvey', value: 3801, year: 2015 },
+  { name: 'doubledUp', value: 12543, year: 2015 },
+  { name: '2015PitSurvey', value: 4441, year: 2013 },
+  { name: 'doubledUp', value: 11467, year: 2013 },
+  { name: '2015PitSurvey', value: 4655, year: 2011 },
+  { name: 'doubledUp', value: 10908, year: 2011 },   
 ];
 
-const colors = ['#75568D', '#AAA4AB'];
+const colors = ['#75568D', '#d4d5d6'];
 
 
 class Definition extends React.Component {
@@ -28,12 +35,12 @@ class Definition extends React.Component {
         emergencyShelter: 'Emergency Shelter',
         transitionalHousing: 'Transitional Housing',
       },
-      shelterActiveValue: 'Transitional Housing',
+      shelterInitialValue: 'Unsheltered',
       pitCategories: {
         '2015PitSurvey': '2015 PIT Survey',
         doubledUp: 'Doubled Up',
       },
-      pitActiveValue: '2015 PIT Survey',
+      pitInitialValue: '2015 PIT Survey',
     };
   }
   componentDidMount() {
@@ -42,36 +49,29 @@ class Definition extends React.Component {
   render() {
     return (
       <div className="Definition">
-        <div className="Definition-container">
-          <h2>{this.state.shelterActiveValue}</h2>
-          <p>
-            Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. 
-            De carne lumbering animata corpora quaeritis. 
-            Summus brains sit​​, morbo vel maleficia?
-          </p>
-        </div>
         <DefinitionPieChart
           data={this.props.shelterTypeData} 
-          activeValue={this.state.shelterActiveValue}
+          initialValue={this.state.shelterInitialValue}
           colors={colors}
           categories={this.state.shelterCategories}
+          content={{
+            'Transitional Housing': <TransitionalHousing  />, 
+            Unsheltered: <Unsheltered />,
+            'Emergency Shelter': <EmergencyShelter />,
+          }}
         />
-        <div className="Definition-container top-spacer" >
-          <h2>{this.state.pitActiveValue}</h2>
-          <p>
-            De apocalypsi gorger omero undead survivor dictum mauris.
-            Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus.
-            resi dentevil vultus comedat cerebella viventium. 
-            Qui animated corpse, cricket bat max brucks terribilem incessu zomby. 
-            The voodoo sacerdos flesh eater, suscitat mortuos comedere carnem virus.
-          </p>
+        <div className="top-spacer" >
+          <DefinitionPieChart
+            data={pitSurveyStaticData} 
+            initialValue={this.state.pitInitialValue}
+            colors={colors}
+            categories={this.state.pitCategories}
+            content={{
+              '2015 PIT Survey': <PITSurvey />,
+              'Doubled Up': <DoubledUp />,
+            }}
+          />
         </div>
-        <DefinitionPieChart
-          data={propsData2} 
-          activeValue={this.state.pitActiveValue}
-          colors={colors}
-          categories={this.state.pitCategories}
-        />
       </div>
     );
   }  
@@ -93,3 +93,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps, mapDispatchToProps,
 )(Definition);
+
