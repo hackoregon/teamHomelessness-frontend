@@ -4,10 +4,7 @@ const EmergencyShelter = () => (
   <div>
     <h2>Emergency Shelter</h2>
     <p>
-      Zombie ipsum specifically for Emergency Shelter. 
-      Reversus ab viral inferno, nam rick grimes malum cerebro. 
-      De carne lumbering animata corpora quaeritis. 
-      Summus brains sit​​, morbo vel maleficia?
+      This category refers to facilities with temporary, overnight sleeping accommodations. Some operate year-round as dedicated homeless shelters, others offer shelter temporarily in churches, schools, and community centers during winter months or on nights when there is severe weather. Some serve any person in need while others offer beds to specific groups, such as women with children, or veterans. On the night of January 28, 2015, 872 of the 3,801 who met the HUD definition of homelessness slept in emergency shelters.
     </p>
   </div>
 );
