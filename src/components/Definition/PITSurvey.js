@@ -2,12 +2,9 @@ import React from 'react';
 
 const PITSurvey = () => (
   <div>
-    <h2>2015 PIT Survey</h2>
+    <h2>PIT Survey</h2>
     <p>
-      Zombie ipsum specifically for 2015 PIT Survey. 
-      Reversus ab viral inferno, nam rick grimes malum cerebro. 
-      De carne lumbering animata corpora quaeritis. 
-      Summus brains sit​​, morbo vel maleficia?
+      The Multnomah County Point-in-Time (PIT) Count of homelessness documents the number of people who are experiencing homelessness on a single night in winter. It is required by the US Department of Housing and Urban Development (HUD), employs a common methodology, and engages outreach workers and volunteers in identifying people experiencing homelessness and collect information about their intentions and circumstances.
     </p>
   </div>
 );

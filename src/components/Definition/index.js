@@ -20,7 +20,7 @@ const pitSurveyStaticData = [
   { name: '2015PitSurvey', value: 4441, year: 2013 },
   { name: 'doubledUp', value: 11467, year: 2013 },
   { name: '2015PitSurvey', value: 4655, year: 2011 },
-  { name: 'doubledUp', value: 10908, year: 2011 },   
+  { name: 'doubledUp', value: 10908, year: 2011 },
 ];
 
 const colors = ['#75568D', '#d4d5d6'];
@@ -50,19 +50,19 @@ class Definition extends React.Component {
     return (
       <div className="Definition">
         <DefinitionPieChart
-          data={this.props.shelterTypeData} 
+          data={this.props.shelterTypeData}
           initialValue={this.state.shelterInitialValue}
           colors={colors}
           categories={this.state.shelterCategories}
           content={{
-            'Transitional Housing': <TransitionalHousing  />, 
+            'Transitional Housing': <TransitionalHousing  />,
             Unsheltered: <Unsheltered />,
             'Emergency Shelter': <EmergencyShelter />,
           }}
         />
         <div className="top-spacer" >
           <DefinitionPieChart
-            data={pitSurveyStaticData} 
+            data={pitSurveyStaticData}
             initialValue={this.state.pitInitialValue}
             colors={colors}
             categories={this.state.pitCategories}
@@ -72,9 +72,11 @@ class Definition extends React.Component {
             }}
           />
         </div>
+        <h2>Not Quite Apples-to-Apples</h2>
+        <p>The services people experiencing homelessness need are varied and change over time. In response, so do the services provided and the policies guiding them. For example, an emergency shelter that expands its services to meet new local demands or align with new policy goals may be reclassified as transitional housing in subsequent years. This means that the numbers of people in each category are not strictly comparable across years, even as they reveal useful information about local needs and capacity.</p>
       </div>
     );
-  }  
+  }
 }
 
 Definition.propTypes = {
@@ -93,4 +95,3 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps, mapDispatchToProps,
 )(Definition);
-
