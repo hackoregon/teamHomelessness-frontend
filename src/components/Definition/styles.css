@@ -1,0 +1,108 @@
+.Definition-container {
+  text-align: center;
+  max-width: 95%;
+  margin: 4em auto 1em auto;
+}
+
+.dataViz-container-500,
+.dataViz-container-800,
+.dataViz-container-650 {
+  max-width: 95%;
+  margin: auto;
+  text-align: center;
+}
+
+.Definition-container p {
+  text-align: left;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+div.top-spacer {
+  margin-top:9em;
+}
+
+.recharts-legend-item {
+  margin-right: 20px!important;
+  margin-top: 9px;
+  cursor: pointer;
+}
+
+.recharts-legend-item.active {
+  color: black;
+}
+
+.recharts-legend-item:hover {
+  color: black;
+}
+
+.Definition-List ul {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.Definition-List li {
+  display: inline;
+  padding: 10px;
+  color: #AAA4AB;
+  flex: inherit;
+}
+
+.Definition-List a {
+  display: inline-block;
+  padding:5px;
+  font-size: 1.3em;
+  text-decoration: none;
+}
+
+.Definition-List a:hover {
+  color: #201024;
+  cursor: pointer;
+}
+
+.Definition-List a.active {
+  font-weight: bold;
+  color: #201024; 
+}
+
+.Definition-List {
+  color:#d4d5d6;
+  font-weight: bold;
+}
+
+.Definition-List a.active {
+  color: #201024;
+  border-bottom: 3px solid #201024;
+}
+
+@media screen and (min-width: 580px) {
+  .Definition-container {
+    max-width: 500px!important;
+  }
+
+  .Definition .recharts-legend-wrapper {
+    bottom: -55px!important;  
+  }
+
+  .recharts-legend-item {
+    margin-right: 30px!important;
+    margin-top: 0;
+  }
+
+  .Definition-List ul {
+    justify-content: center;
+  }
+
+  .dataViz-container-800 {
+    max-width: 800px;
+  }
+
+  .dataViz-container-500 {
+    max-width: 500px;
+  }
+
+  .dataViz-container-650 {
+    max-width: 650px;
+  }
+}
