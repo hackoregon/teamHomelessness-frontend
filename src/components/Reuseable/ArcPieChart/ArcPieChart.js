@@ -113,7 +113,7 @@ class ArcPieChart extends React.Component {
 }
 
 ArcPieChart.propTypes = {
-  dataSets: PropTypes.array,
+  dataSets: PropTypes.array.isRequired,
 };
 
 export default ArcPieChart;
