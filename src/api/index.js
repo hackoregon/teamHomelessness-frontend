@@ -27,3 +27,26 @@ export const compareAgeGenderApi = () => homelessGet('/pitacs')
 export const typesOfSheltersApi = () => homelessGet('/individuals')
   .then(data => data);
 
+const percentage = (sum, num) => Math.round((num / sum) * 100);
+
+export const compareServiceCallsApi = () => homelessGet('/service211')
+  .then((data) => {
+    let housing = 0;
+    let other = 0;
+    data.forEach((datum) => {
+      const name = datum.service_name;
+      if (name === 'Housing') {
+        housing = datum.freq;
+      } else {
+        other += datum.freq;
+      }
+    });
+    const sum = housing + other;
+    return {
+      name: '2016',
+      data: [
+        { name: 'Housing', value: percentage(sum, housing) },
+        { name: 'Other', value: percentage(sum, other) },
+      ],
+    };
+  });
