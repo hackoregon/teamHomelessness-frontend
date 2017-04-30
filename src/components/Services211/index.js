@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import StoryCard from '@hackoregon/component-library/lib/StoryCard/StoryCard';
-import ArcPieChart from '@hackoregon/component-library/lib/ArcPieChart/ArcPieChart';
+import ArcPieChart from '../ArcPieChart/ArcPieChart';
 import { fetchServiceCallsData } from '../../state/Services211/actions';
 
 class Services211 extends React.Component {
