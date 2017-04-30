@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import StoryCard from '@hackoregon/component-library/lib/StoryCard/StoryCard';
-import ArcPieChart from '../ArcPieChart/ArcPieChart';
+import { ArcPieChart, TitleNav } from '../Reuseable';
 import { fetchServiceCallsData } from '../../state/Services211/actions';
 
 class Services211 extends React.Component {
@@ -11,9 +11,11 @@ class Services211 extends React.Component {
   render() {
     const dataLoaded = !!this.props.pieData[0];
     return (
-      <StoryCard v-if="loaded" title="Homelessness Services">
-        { dataLoaded ? <ArcPieChart dataSets={this.props.pieData} /> : null }
-      </StoryCard>
+      <TitleNav title="Homelessness Services">
+        <StoryCard title="Homelessness Services">
+          { dataLoaded ? <ArcPieChart dataSets={this.props.pieData} /> : null }
+        </StoryCard>
+      </TitleNav>
     );
   }
 }
