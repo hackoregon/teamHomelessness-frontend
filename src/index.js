@@ -40,7 +40,7 @@ export default function createRoutes() {
     },
     {
       path: '/definition',
-      name: 'servicespage',
+      name: 'definitionpage',
       getComponent(nextState, cb) {
         const renderRoute = loadModule(cb);
         require.ensure([], require => Promise.resolve(require('./components/Definition'))
@@ -49,11 +49,11 @@ export default function createRoutes() {
       },
     },
     {
-      path: '/services',
-      name: 'definitionpage',
+      path: '/services211',
+      name: 'servicespage',
       getComponent(nextState, cb) {
         const renderRoute = loadModule(cb);
-        require.ensure([], require => Promise.resolve(require('./components/Services'))
+        require.ensure([], require => Promise.resolve(require('./components/Services211'))
           .then(renderRoute)
           .catch(errorLoading));
       },
