@@ -2,6 +2,7 @@
  import { routerReducer } from 'react-router-redux';
  import population from './Population';
  import definition from './Definition';
+ import services211 from './Services211';
 
  export default function createReducer(asyncReducers) {
    return combineReducers({
@@ -9,5 +10,6 @@
      ...asyncReducers,
      population,
      definition,
+     services211,
    });
  }
