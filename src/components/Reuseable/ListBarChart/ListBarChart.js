@@ -8,14 +8,22 @@ const tickLabel = (options) => {
   );
 };
 
+const barLabel = (options) => {
+  const { payload, x, y } = options;
+  return (
+    <Text y={options.y + 5} x={options.x}>{`${payload.value}%`}</Text>
+  );
+};
+
 const ListBarChart = props => (
-  <ResponsiveContainer width="100%" height={'100%'} minHeight={1000} >
+  <ResponsiveContainer width="100%" height={'100%'} minHeight={1200} >
     <BarChart
       data={props.data}
       layout={'vertical'}
       margin={{ top: 10, right: 0, left: 0, bottom: 0 }}
     >
       <XAxis
+        domain={[0, 6]}
         type="number"
         axisLine={false}
         tickLine={false}
@@ -31,7 +39,7 @@ const ListBarChart = props => (
       <Bar
         dataKey="value"
         fill={props.colors[0]}
-        label={props.labelKey}
+        label={barLabel}
         legendType={'none'}
         barSize={25}
       />
