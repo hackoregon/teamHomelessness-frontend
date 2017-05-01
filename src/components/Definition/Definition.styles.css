@@ -49,7 +49,7 @@ div.top-spacer {
   flex: inherit;
 }
 
-.Definition-List a {
+.link {
   display: inline-block;
   padding:5px;
   font-size: 1.3em;
@@ -63,7 +63,7 @@ div.top-spacer {
 
 .Definition-List a.active {
   font-weight: bold;
-  color: #201024; 
+  color: #201024;
 }
 
 .Definition-List {
@@ -71,7 +71,7 @@ div.top-spacer {
   font-weight: bold;
 }
 
-.Definition-List a.active {
+.active {
   color: #201024;
   border-bottom: 3px solid #201024;
 }
@@ -82,7 +82,7 @@ div.top-spacer {
   }
 
   .Definition .recharts-legend-wrapper {
-    bottom: -55px!important;  
+    bottom: -55px!important;
   }
 
   .recharts-legend-item {

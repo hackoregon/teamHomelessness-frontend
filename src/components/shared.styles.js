@@ -12,4 +12,7 @@ export default {
     textAlign: 'left',
     fontSize: '15px',
   },
+  textContainer: {
+    height: '275px',
+  },
 };
