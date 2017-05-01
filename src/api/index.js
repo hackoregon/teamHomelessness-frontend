@@ -27,26 +27,38 @@ export const compareAgeGenderApi = () => homelessGet('/pitacs')
 export const typesOfSheltersApi = () => homelessGet('/individuals')
   .then(data => data);
 
-const percentage = (sum, num) => Math.round((num / sum) * 100);
+const percentage = (sum, num) => Number(((num / sum) * 100).toFixed(2));
 
 export const compareServiceCallsApi = () => homelessGet('/service211')
   .then((data) => {
     let housing = 0;
     let other = 0;
+    const otherData = [];
     data.forEach((datum) => {
       const name = datum.service_name;
       if (name === 'Housing') {
         housing = datum.freq;
       } else {
         other += datum.freq;
+        otherData.push(datum);
       }
     });
     const sum = housing + other;
+    const unsortedChart = otherData.map((datum) => {
+      if (datum.service_name !== 'Housing') {
+        return {
+          name: datum.service_name,
+          value: percentage(sum, datum.freq),
+        };
+      }
+    });
+    const otherChart = unsortedChart.sort((a, b) => b.value - a.value);
     return {
       name: '2016',
+      otherChart,
       data: [
-        { name: 'Housing assistance', value: percentage(sum, housing) },
-        { name: 'Other services', value: percentage(sum, other) },
+        { name: 'Housing assistance', value: Math.round(percentage(sum, housing)) },
+        { name: 'Other services', value: Math.round(percentage(sum, other))  },
       ],
     };
   });
