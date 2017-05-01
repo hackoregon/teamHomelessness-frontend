@@ -4,11 +4,11 @@ const CustomPieLegend = (options) => {
   const { payload } = options;
 
   const styles = {
-    display: 'inline-block', verticalAlign: 'middle', marginRight: 4,
+    display: 'inline-block', verticalAlign: 'middle', marginRight: 8,
   };
 
   return (
-    <ul className="recharts-default-legend">
+    <ul className="recharts-default-legend" style={{ textAlign: 'center' }}>
       {
         payload.map((entry, index) => {
           const active = entry.value === options.active ? 'active' : '';

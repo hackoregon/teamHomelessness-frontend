@@ -138,12 +138,13 @@ class DefinitionPieChart extends React.Component {
               </Pie>
               <Legend
                 wrapperStyle={{ bottom: '-75px' }}
+                align={'center'}
                 content={
                   <CustomPieLegend
                     updateCategory={this.updateCategory}
                     active={this.state.activeValue}
                   />
-              }
+                }
               />
             </PieChart>
           </ResponsiveContainer>
