@@ -17,11 +17,11 @@ import DoubledUp from './DoubledUp';
 
 
 const pitSurveyStaticData = [
-  { name: '2015PitSurvey', value: 3801, year: 2015 },
+  { name: 'PitSurvey', value: 3801, year: 2015 },
   { name: 'doubledUp', value: 12543, year: 2015 },
-  { name: '2013PitSurvey', value: 4441, year: 2013 },
+  { name: 'PitSurvey', value: 4441, year: 2013 },
   { name: 'doubledUp', value: 11467, year: 2013 },
-  { name: '2011PitSurvey', value: 4655, year: 2011 },
+  { name: 'PitSurvey', value: 4655, year: 2011 },
   { name: 'doubledUp', value: 10908, year: 2011 },
 ];
 
@@ -39,10 +39,10 @@ class Definition extends React.Component {
       },
       shelterInitialValue: 'Unsheltered',
       pitCategories: {
-        '2015PitSurvey': '2015 PIT Survey',
-        doubledUp: 'Doubled Up',
+        PitSurvey: 'Doubled Up Estimate',
+        doubledUp: 'PIT Survey',
       },
-      pitInitialValue: '2015 PIT Survey',
+      pitInitialValue: 'Doubled Up Estimate',
     };
   }
   componentDidMount() {
@@ -84,8 +84,8 @@ class Definition extends React.Component {
                 colors={colors}
                 categories={this.state.pitCategories}
                 content={{
-                  '2015 PIT Survey': <DoubledUp />,
-                  'Doubled Up': <DoubledUp />,
+                  'PIT Survey': <DoubledUp />,
+                  'Doubled Up Estimate': <DoubledUp />,
                 }}
               />
             </div>
