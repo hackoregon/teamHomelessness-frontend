@@ -49,6 +49,16 @@ export default function createRoutes() {
       },
     },
     {
+      path: '/women',
+      name: 'womenpage',
+      getComponent(nextState, cb) {
+        const renderRoute = loadModule(cb);
+        require.ensure([], require => Promise.resolve(require('./components/Women'))
+          .then(renderRoute)
+          .catch(errorLoading));
+      },
+    },
+    {
       path: '/services211',
       name: 'servicespage',
       getComponent(nextState, cb) {
