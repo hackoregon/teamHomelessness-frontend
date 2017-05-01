@@ -15,6 +15,7 @@ const title = {
   textAlign: 'center',
   fontWeight: 'bold',
   margin: '0 100px',
+  width: '450px',
 };
 
 const link = {
