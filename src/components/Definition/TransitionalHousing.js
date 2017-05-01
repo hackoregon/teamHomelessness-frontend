@@ -1,23 +1,23 @@
 import React from 'react';
+import shared from '../shared.styles';
 
 const TransitionalHousing = (props) => {
-
   const { year } = props;
   const { rawCount, rawTotal } = props.data;
 
   return (
-    <div>
-      <h2>Transitional Housing</h2>
-      <p>
-        {year === 2015 && 
+    <div style={shared.textContainer}>
+      <h2 style={shared.header}>Transitional Housing</h2>
+      <p style={shared.text}>
+        {year === 2015 &&
         `Transitional housing is temporary housing coupled with services to help people secure permanent housing, typically within two years.  It can include hotels, motels, apartments or facilities designed to support housing-insecure people or families. Participants choose whether to accept services offered.  On the night of January 28, ${year}, ${rawCount.toLocaleString()} of the ${rawTotal.toLocaleString()} who met the HUD definition of homelessness planned to sleep in transitional housing.`
         }
 
-        {year === 2013 && 
+        {year === 2013 &&
         ` Transitional housing is temporary housing coupled with services to help people secure permanent housing, typically within two years.  It can include hotels, motels, apartments or facilities designed to support housing-insecure people or families. Participants choose whether to accept services offered.On the night of January 30, ${year}, ${rawCount.toLocaleString()} of the ${rawTotal.toLocaleString()} who met the HUD definition of homelessness planned to sleep in transitional housing.`
         }
 
-        {year === 2011 && 
+        {year === 2011 &&
         ` Transitional housing is temporary housing coupled with services to help people secure permanent housing, typically within two years.  It can include hotels, motels, apartments or facilities designed to support housing-insecure people or families. Participants choose whether to accept services offered.  On the night of January 26, ${year}, ${rawCount.toLocaleString()} of the ${rawTotal.toLocaleString()} who met the HUD definition of homelessness planned to sleep in transitional housing.`
         }
 

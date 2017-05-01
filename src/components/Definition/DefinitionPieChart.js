@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { PieChart, Pie, ResponsiveContainer, Text, Cell, Legend } from 'recharts';
 import CustomPieLegend from './CustomPieLegend';
+import styles from '../Reuseable/ArcPieChart/ArcPieChart.styles.css';
 
 const findPercentage = (val, arr) => {
   const total = arr.reduce((acc, cur) => acc + cur.value, 0);
@@ -30,8 +31,8 @@ const pieLabel = (options) => {
     <Text
       {...options}
       x={options.cx}
-      y={options.cy}
-      fontSize={30}
+      y={options.cy - 20}
+      fontSize={34}
       fill={'black'}
       style={{ fontWeight: 'bold' }}
       textAnchor={'middle'}
@@ -53,21 +54,21 @@ class DefinitionPieChart extends React.Component {
     };
 
     this.updateCategory = this.updateCategory.bind(this);
-    this.cleanData = this.cleanData.bind(this);  
+    this.cleanData = this.cleanData.bind(this);
   }
 
   cleanData(data) {
     return data.filter(item => item.year === this.state.year)
       .map((item, idx, arr) => (
         { ...item,
-          name: this.props.categories[item.name], 
-          label: item.name === getKeyByValue(this.props.categories, 
-            this.state.activeValue) || false, 
+          name: this.props.categories[item.name],
+          label: item.name === getKeyByValue(this.props.categories,
+            this.state.activeValue) || false,
           value: findPercentage(item.value, arr),
           rawCount: item.value,
           rawTotal: arr.reduce((acc, cur) => acc + cur.value, 0),
         }
-      ));  
+      ));
   }
 
   updateCategory(val) {
@@ -75,29 +76,30 @@ class DefinitionPieChart extends React.Component {
       this.setState({ activeValue: val });
     }
   }
-  
+
   render() {
     return (
-      <div className="dataViz-container-800" style={{ marginBottom: '65px' }} >
+      <div style={{ marginBottom: '65px' }} >
         <div className="Definition-container">
           { this.props.data.length > 0 &&
-            React.cloneElement(this.props.content[this.state.activeValue], 
-              { year: this.state.year, 
+            React.cloneElement(this.props.content[this.state.activeValue],
+              { year: this.state.year,
                 data: this.cleanData(this.props.data)
                 .filter(item => item.name === this.state.activeValue)[0] })
           }
         </div>
-        <div className="Definition-List">
-          <ul>
-            {
+        <div className={styles.container}>
+          <div className={styles.yearsContainer}>
+            <ul className={styles.years}>
+              {
               getUniqueYears(this.props.data)
               .map((item) => {
-                const active = item === this.state.year ? 'active' : '';
+                const active = item === this.state.year ? styles.linkActive : '';
                 return (
-                  <li key={item} >
-                    <a 
-                      className={`${active}`}
-                      role="button" 
+                  <li className={styles.listItem} key={item} >
+                    <a
+                      className={`${styles.link} ${active}`}
+                      role="button"
                       onClick={() => this.setState({ year: item })}
                     >
                       {item}
@@ -106,44 +108,46 @@ class DefinitionPieChart extends React.Component {
                 );
               })
             }
-          </ul>
-        </div>
-        <ResponsiveContainer width={'100%'} height={175}>
-          <PieChart 
-            margin={{ top: 0, right: 5, bottom: 120, left: 5 }}
-          >
-            <Pie 
-              startAngle={180} 
-              endAngle={0} 
-              data={this.cleanData(this.props.data)}
-              cy={'100%'}
-              labelLine={false} 
-              innerRadius={'105%'} 
-              outerRadius={'185%'}
-              fill="#e3dde8"
-              animationDuration={900}
-              label={pieLabel} 
+            </ul>
+          </div>
+          <ResponsiveContainer width={'100%'} height={225}>
+            <PieChart
+              margin={{ top: 0, right: 5, bottom: 120, left: 5 }}
             >
-              {
+              <Pie
+                startAngle={180}
+                endAngle={0}
+                data={this.cleanData(this.props.data)}
+                cy={'100%'}
+                labelLine={false}
+                innerRadius={'105%'}
+                outerRadius={'185%'}
+                fill="#e3dde8"
+                animationDuration={900}
+                label={pieLabel}
+                onClick={this.updateCategory}
+              >
+                {
                 this.cleanData(this.props.data).map((entry) => {
                   const color = entry.name === this.state.activeValue
-                    ? this.props.colors[0] 
+                    ? this.props.colors[0]
                     : this.props.colors[1];
                   return <Cell fill={color} key={entry.value} />;
                 })
               }
-            </Pie>
-            <Legend 
-              wrapperStyle={{ bottom: '-75px' }}
-              content={
-                <CustomPieLegend 
-                  updateCategory={this.updateCategory} 
-                  active={this.state.activeValue} 
-                />
+              </Pie>
+              <Legend
+                wrapperStyle={{ bottom: '-75px' }}
+                content={
+                  <CustomPieLegend
+                    updateCategory={this.updateCategory}
+                    active={this.state.activeValue}
+                  />
               }
-            />
-          </PieChart>
-        </ResponsiveContainer>
+              />
+            </PieChart>
+          </ResponsiveContainer>
+        </div>
       </div>
     );
   }
