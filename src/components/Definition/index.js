@@ -39,10 +39,10 @@ class Definition extends React.Component {
       },
       shelterInitialValue: 'Unsheltered',
       pitCategories: {
-        PitSurvey: 'Doubled Up Estimate',
-        doubledUp: 'PIT Survey',
+        PitSurvey: 'PIT Survey',
+        doubledUp: 'Doubled Up Estimate',
       },
-      pitInitialValue: 'Doubled Up Estimate',
+      pitInitialValue: 'PIT Survey',
     };
   }
   componentDidMount() {
