@@ -21,18 +21,25 @@ const link = {
   margin: '0 10px',
 };
 
+const childContainer = {
+  maxWidth: '600px',
+  margin: '0 auto',
+};
+
 const TitleNav = props => (
   <div>
     <div style={titleContainer}>
       <Link to={props.prev} style={link}>
-        <img src="../../assets/arrow-left.svg" />
+        <img src="https://s3-us-west-2.amazonaws.com/hacko-homeless-staging/arrow-left.svg" />
       </Link>
       <h1 style={title}>{props.title}</h1>
       <Link to={props.next} style={link}>
-        <img src="../../assets/arrow-right.svg" />
+        <img src="https://s3-us-west-2.amazonaws.com/hacko-homeless-staging/arrow-right.svg" />
       </Link>
     </div>
-    {props.children}
+    <div style={childContainer}>
+      {props.children}
+    </div>
   </div>
 );
 
