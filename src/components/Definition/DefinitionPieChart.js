@@ -125,7 +125,7 @@ class DefinitionPieChart extends React.Component {
                 fill="#e3dde8"
                 animationDuration={900}
                 label={pieLabel}
-                onClick={this.updateCategory}
+                onClick={options => this.updateCategory(options.payload.name)}
               >
                 {
                 this.cleanData(this.props.data).map((entry) => {
