@@ -52,7 +52,7 @@ class ArcPieChart extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div style={{ marginBottom: '60px' }}>
         <ResponsiveContainer width={'100%'} height={225}>
           <PieChart
             margin={{ top: 0, right: 5, bottom: 100, left: 5 }}
