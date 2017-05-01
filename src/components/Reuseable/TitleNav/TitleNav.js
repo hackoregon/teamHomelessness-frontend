@@ -22,7 +22,7 @@ const link = {
 };
 
 const childContainer = {
-  maxWidth: '600px',
+  maxWidth: '500px',
   margin: '0 auto',
 };
 
