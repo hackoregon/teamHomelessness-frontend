@@ -58,7 +58,7 @@ class Definition extends React.Component {
         <StoryCard>
           <div className="Definition">
             <DefinitionPieChart
-              data={this.props.shelterTypeData}
+              data={this.props.shelterTypeData.filter(item => item.year !== 2009)}
               initialValue={this.state.shelterInitialValue}
               colors={colors}
               categories={this.state.shelterCategories}
@@ -77,9 +77,7 @@ class Definition extends React.Component {
             This means that the numbers of people in each category are not strictly comparable across years, even as they reveal useful information about local needs and capacity.
             </p>
             </div>
-
             <div className="Definition-container top-spacer" >
-
               <DefinitionPieChart
                 data={pitSurveyStaticData}
                 initialValue={this.state.pitInitialValue}
