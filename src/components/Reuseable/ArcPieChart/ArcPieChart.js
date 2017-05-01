@@ -27,7 +27,7 @@ class ArcPieChart extends React.Component {
       <Text
         x={cx}
         y={cy - 20}
-        fontSize={28}
+        fontSize={34}
         fill={'black'}
         style={{ fontWeight: 'bold' }}
         textAnchor={'middle'}
@@ -53,9 +53,10 @@ class ArcPieChart extends React.Component {
   render() {
     return (
       <div className={styles.container} >
-        <div className={styles.yearsContainer}>
-          <ul className={styles.years}>
-            {
+        { this.props.renderLinks ?
+          <div className={styles.yearsContainer}>
+            <ul className={styles.years}>
+              {
               this.props.dataSets.map((data) => {
                 const name = data.name;
                 const active = name === this.state.selectedSet.name ? styles.linkActive : '';
@@ -71,9 +72,9 @@ class ArcPieChart extends React.Component {
                 );
               })
             }
-          </ul>
-        </div>
-        <ResponsiveContainer width={'100%'} height={175}>
+            </ul>
+          </div> : null }
+        <ResponsiveContainer width={'100%'} height={225}>
           <PieChart
             margin={{ top: 0, right: 5, bottom: 100, left: 5 }}
           >
@@ -113,7 +114,12 @@ class ArcPieChart extends React.Component {
 }
 
 ArcPieChart.propTypes = {
-  dataSets: PropTypes.array,
+  dataSets: PropTypes.array.isRequired,
+  renderLinks: PropTypes.boolean,
+};
+
+ArcPieChart.defaultProps = {
+  renderLinks: true,
 };
 
 export default ArcPieChart;
