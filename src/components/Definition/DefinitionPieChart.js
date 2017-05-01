@@ -63,7 +63,9 @@ class DefinitionPieChart extends React.Component {
           name: this.props.categories[item.name], 
           label: item.name === getKeyByValue(this.props.categories, 
             this.state.activeValue) || false, 
-          value: findPercentage(item.value, arr), 
+          value: findPercentage(item.value, arr),
+          rawCount: item.value,
+          rawTotal: arr.reduce((acc, cur) => acc + cur.value, 0),
         }
       ));  
   }
@@ -78,7 +80,12 @@ class DefinitionPieChart extends React.Component {
     return (
       <div className="dataViz-container-800" style={{ marginBottom: '65px' }} >
         <div className="Definition-container">
-          {this.props.content[this.state.activeValue]}
+          { this.props.data.length > 0 &&
+            React.cloneElement(this.props.content[this.state.activeValue], 
+              { year: this.state.year, 
+                data: this.cleanData(this.props.data)
+                .filter(item => item.name === this.state.activeValue)[0] })
+          }
         </div>
         <div className="Definition-List">
           <ul>

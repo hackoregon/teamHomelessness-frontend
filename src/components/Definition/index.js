@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import styles from './styles.css'; // eslint-disable-line no-unused-vars;
+import styles from './Definition.styles.css'; // eslint-disable-line no-unused-vars;
+
 
 import { fetchDefinitionData } from '../../state/Definition/actions';
 import DefinitionPieChart from './DefinitionPieChart';
@@ -10,7 +11,7 @@ import { shelterType } from '../../state/Definition/selectors';
 import TransitionalHousing from './TransitionalHousing';
 import EmergencyShelter from './EmergencyShelter';
 import Unsheltered from './Unsheltered';
-import PITSurvey from './PITSurvey';
+
 import DoubledUp from './DoubledUp';
 
 
@@ -55,25 +56,37 @@ class Definition extends React.Component {
           colors={colors}
           categories={this.state.shelterCategories}
           content={{
-            'Transitional Housing': <TransitionalHousing  />,
+            'Transitional Housing': <TransitionalHousing  data={this.props.shelterTypeData} />,
             Unsheltered: <Unsheltered />,
             'Emergency Shelter': <EmergencyShelter />,
           }}
         />
-        <div className="top-spacer" >
+        <div className="Definition-container">
+          <h4>Not Quite Apples-to-Apples</h4>
+          <p>
+          The services people experiencing homelessness need are varied and change over time. 
+          In response, so do the services provided and the policies guiding them. For example, an emergency shelter that 
+          expands its services to meet new local demands or align with new policy goals may be reclassified as transitional housing in subsequent years. 
+          This means that the numbers of people in each category are not strictly comparable across years, even as they reveal useful information about local needs and capacity.
+          </p>
+        </div>
+
+        <div className="Definition-container top-spacer" >
+          <p>
+            The Multnomah County Point-in-Time (PIT) Count of homelessness documents the number of people who are experiencing homelessness on a single night in winter. It is required by the US Department of Housing and Urban Development (HUD), employs a common methodology, and engages outreach workers and volunteers in identifying people experiencing homelessness and collect information about their intentions and circumstances.
+          </p>
           <DefinitionPieChart
             data={pitSurveyStaticData}
             initialValue={this.state.pitInitialValue}
             colors={colors}
             categories={this.state.pitCategories}
             content={{
-              '2015 PIT Survey': <PITSurvey />,
+              '2015 PIT Survey': <DoubledUp />,
               'Doubled Up': <DoubledUp />,
             }}
           />
         </div>
-        <h2>Not Quite Apples-to-Apples</h2>
-        <p>The services people experiencing homelessness need are varied and change over time. In response, so do the services provided and the policies guiding them. For example, an emergency shelter that expands its services to meet new local demands or align with new policy goals may be reclassified as transitional housing in subsequent years. This means that the numbers of people in each category are not strictly comparable across years, even as they reveal useful information about local needs and capacity.</p>
+        
       </div>
     );
   }
