@@ -8,20 +8,57 @@ export const homelessGet = endpoint => axios.get(`${BASE_URL}${endpoint}`)
 
 export const compareEthnicityApi = () => homelessGet('/pitacseth')
   .then(data => (
-    data.map(element => ({
-      name: element.ethnicity,
-      homeless: element.hud_homeless,
-      general: element.mult_general,
-    }))
+    data.map((element) => {
+      let name = '';
+      switch (element.ethnicity) {
+        case 'white':
+          name = 'White';
+          break;
+        case 'pop_of_color':
+          name = 'People of Color';
+          break;
+      }
+      return {
+        name,
+        homeless: element.hud_homeless,
+        general: element.mult_general,
+      };
+    })
   ));
 
 export const compareAgeGenderApi = () => homelessGet('/pitacs')
   .then(data => (
-    data.map(element => ({
-      name: element.comp_name,
-      homeless: element.pit_percent,
-      general: element.acs_percent,
-    }))
+    data.map((element) => {
+      let name = '';
+      switch (element.comp_name) {
+        case 'veterans':
+          name = 'Veterans';
+          break;
+        case 'disablity':
+          name = 'Disability';
+          break;
+        case 'agehouse18to25':
+          name = '18 to 25';
+          break;
+        case 'genderfemale':
+          name = 'Female';
+          break;
+        case 'gendermale':
+          name = 'Male';
+          break;
+        case 'agehouse25plus':
+          name = 'Over 25';
+          break;
+        case 'agehousesub18':
+          name = 'Under 18';
+          break;
+      }
+      return {
+        name,
+        homeless: element.pit_percent,
+        general: element.acs_percent,
+      };
+    })
   ));
 
 export const typesOfSheltersApi = () => homelessGet('/individuals')

@@ -13,21 +13,21 @@ const filterByName = (data, keys) => data.filter(
  );
 export const ethnicity = state => filterByName(
   root(state).ethnicityData || [],
-  ['white', 'pop_of_color'],
+  ['White', 'People of Color'],
 );
 export const veteranStatus = state => filterByName(
   root(state).ageGenderData || [],
-  ['veterans'],
+  ['Veterans'],
 );
 export const disability = state => filterByName(
   root(state).ageGenderData || [],
-  ['disablity'],
+  ['Disability'],
 );
 export const age = state => filterByName(
   root(state).ageGenderData || [],
-  ['agehousesub18', 'agehouse25plus', 'agehouse18to25'],
+  ['Under 18', '18 to 25', 'Over 25'],
 );
 export const gender = state => filterByName(
   root(state).ageGenderData || [],
-  ['gendermale', 'genderfemale'],
+  ['Male', 'Female'],
 );
