@@ -9,6 +9,16 @@ const loadModule = cb => (componentModule) => {
 export default function createRoutes() {
   return [
     {
+      path: '/',
+      name: 'home',
+      getComponent(nextState, cb) {
+        const renderRoute = loadModule(cb);
+        require.ensure([], require => Promise.resolve(require('./components/Definition'))
+        .then(renderRoute)
+        .catch(errorLoading));
+      },
+    },
+    {
       path: '/homeless-population',
       name: 'homelesspopulationpage',
       getComponent(nextState, cb) {

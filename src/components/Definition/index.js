@@ -19,9 +19,9 @@ import DoubledUp from './DoubledUp';
 const pitSurveyStaticData = [
   { name: '2015PitSurvey', value: 3801, year: 2015 },
   { name: 'doubledUp', value: 12543, year: 2015 },
-  { name: '2015PitSurvey', value: 4441, year: 2013 },
+  { name: '2013PitSurvey', value: 4441, year: 2013 },
   { name: 'doubledUp', value: 11467, year: 2013 },
-  { name: '2015PitSurvey', value: 4655, year: 2011 },
+  { name: '2011PitSurvey', value: 4655, year: 2011 },
   { name: 'doubledUp', value: 10908, year: 2011 },
 ];
 
