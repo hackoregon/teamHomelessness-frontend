@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import styles from './Definition.styles.css'; // eslint-disable-line no-unused-vars;
-
+import { TitleNav } from '../Reuseable';
+import StoryCard from '@hackoregon/component-library/lib/StoryCard/StoryCard';
+import shared from '../shared.styles.js';
 
 import { fetchDefinitionData } from '../../state/Definition/actions';
 import DefinitionPieChart from './DefinitionPieChart';
@@ -49,45 +50,50 @@ class Definition extends React.Component {
   }
   render() {
     return (
-      <div className="Definition">
-        <DefinitionPieChart
-          data={this.props.shelterTypeData}
-          initialValue={this.state.shelterInitialValue}
-          colors={colors}
-          categories={this.state.shelterCategories}
-          content={{
-            'Transitional Housing': <TransitionalHousing  data={this.props.shelterTypeData} />,
-            Unsheltered: <Unsheltered />,
-            'Emergency Shelter': <EmergencyShelter />,
-          }}
-        />
-        <div className="Definition-container">
-          <h4>Not Quite Apples-to-Apples</h4>
-          <p>
-          The services people experiencing homelessness need are varied and change over time. 
-          In response, so do the services provided and the policies guiding them. For example, an emergency shelter that 
-          expands its services to meet new local demands or align with new policy goals may be reclassified as transitional housing in subsequent years. 
-          This means that the numbers of people in each category are not strictly comparable across years, even as they reveal useful information about local needs and capacity.
-          </p>
-        </div>
+      <TitleNav
+        title="What does it mean to be homeless?"
+        prev="/services211"
+        next="/homeless-population"
+      >
+        <StoryCard>
+          <div className="Definition">
+            <DefinitionPieChart
+              data={this.props.shelterTypeData}
+              initialValue={this.state.shelterInitialValue}
+              colors={colors}
+              categories={this.state.shelterCategories}
+              content={{
+                'Transitional Housing': <TransitionalHousing  data={this.props.shelterTypeData} />,
+                Unsheltered: <Unsheltered />,
+                'Emergency Shelter': <EmergencyShelter />,
+              }}
+            />
+            <div className="Definition-container">
+              <h3 style={shared.subHeader}>Not Quite Apples-to-Apples</h3>
+              <p style={shared.footnote}>
+            The services people experiencing homelessness need are varied and change over time.
+            In response, so do the services provided and the policies guiding them. For example, an emergency shelter that
+            expands its services to meet new local demands or align with new policy goals may be reclassified as transitional housing in subsequent years.
+            This means that the numbers of people in each category are not strictly comparable across years, even as they reveal useful information about local needs and capacity.
+            </p>
+            </div>
 
-        <div className="Definition-container top-spacer" >
-          <p>
-            The Multnomah County Point-in-Time (PIT) Count of homelessness documents the number of people who are experiencing homelessness on a single night in winter. It is required by the US Department of Housing and Urban Development (HUD), employs a common methodology, and engages outreach workers and volunteers in identifying people experiencing homelessness and collect information about their intentions and circumstances.
-          </p>
-          <DefinitionPieChart
-            data={pitSurveyStaticData}
-            initialValue={this.state.pitInitialValue}
-            colors={colors}
-            categories={this.state.pitCategories}
-            content={{
-              '2015 PIT Survey': <DoubledUp />,
-              'Doubled Up': <DoubledUp />,
-            }}
-          />
-        </div>
-        
-      </div>
+            <div className="Definition-container top-spacer" >
+
+              <DefinitionPieChart
+                data={pitSurveyStaticData}
+                initialValue={this.state.pitInitialValue}
+                colors={colors}
+                categories={this.state.pitCategories}
+                content={{
+                  '2015 PIT Survey': <DoubledUp />,
+                  'Doubled Up': <DoubledUp />,
+                }}
+              />
+            </div>
+          </div>
+        </StoryCard>
+      </TitleNav>
     );
   }
 }
