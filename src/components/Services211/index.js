@@ -11,9 +11,17 @@ class Services211 extends React.Component {
   render() {
     const dataLoaded = !!this.props.pieData[0];
     return (
-      <TitleNav title="Homelessness Services">
-        <StoryCard title="Homelessness Services">
-          { dataLoaded ? <ArcPieChart dataSets={this.props.pieData} /> : null }
+      <TitleNav
+        title="Homelessness Services"
+        prev="/migration"
+        next="/definition"
+      >
+        <StoryCard>
+          <p>In 2016 the 211info helpline fielded 6759 calls for services from people who self-identified as homeless. Most of those calls were directed to housing assistance services.</p>
+          { dataLoaded ? <ArcPieChart
+            dataSets={this.props.pieData}
+            renderLinks={false}
+          /> : null }
         </StoryCard>
       </TitleNav>
     );
