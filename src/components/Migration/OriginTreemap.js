@@ -9,14 +9,16 @@ const propsData = [
   { name: 'Portland', percent: 4 },
 ].sort((a, b) => b.percent - a.percent);
 
-const propsYears = ['2011', '2013', '2015'];
-const propsActive = '2011';
-
 const COLORS = ['#75568D', '#e3dde8'];
 
 const Content = (options) => {
   const { x, y, width, height, value, name, index } = options;
-
+  const textStyle = {
+    textAlign: 'left',
+  };
+  if (value > 35) {
+    textStyle.color = 'white';
+  }
   return (
     <g>
       <rect
@@ -30,42 +32,28 @@ const Content = (options) => {
           strokeWidth: '3',
         }}
       />
-      <foreignObject x={x + 10} y={y + 8} width={width - 10}>
-        <p xmlns="http://www.w3.org/1999/xhtml" style={{ textAlign: 'left' }} >
+      <foreignObject x={x + 10} y={y - 5} width={width - 10}>
+        <p xmlns="http://www.w3.org/1999/xhtml" style={textStyle} >
           {name}<b>  {value}%</b>
         </p>
       </foreignObject>
-      
+
     </g>
   );
 };
 
 const OriginTreemap = props => (
-  <div className="dataViz-container-650">
-    <ResponsiveContainer width={'100%'} height={390}>
+  <div style={{ marginBottom: '30px' }}>
+    <ResponsiveContainer width={'100%'} height={300}>
       <Treemap
         data={propsData}
         dataKey="percent"
-        ratio={1/1}
+        ratio={1 / 1}
         stroke="#fff"
         fill="#75568D"
         content={<Content />}
       />
     </ResponsiveContainer>
-    <div className="Migration-List">
-      <ul>
-        {
-          propsYears.map((item) => {
-            const active = item === propsActive ? 'active' : '';
-            return (
-              <li key={item}>
-                <a className={`${active}`}>{item}</a>
-              </li>
-            );
-          })
-        }
-      </ul>
-    </div>
   </div>
 );
 

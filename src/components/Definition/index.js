@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { TitleNav } from '../Reuseable';
 import StoryCard from '@hackoregon/component-library/lib/StoryCard/StoryCard';
-import shared from '../shared.styles.js';
+import shared from '../shared.styles';
 
 import { fetchDefinitionData } from '../../state/Definition/actions';
 import DefinitionPieChart from './DefinitionPieChart';
