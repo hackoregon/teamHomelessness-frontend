@@ -45,8 +45,8 @@ export const compareServiceCallsApi = () => homelessGet('/service211')
     return {
       name: '2016',
       data: [
-        { name: 'Housing', value: percentage(sum, housing) },
-        { name: 'Other', value: percentage(sum, other) },
+        { name: 'Housing assistance', value: percentage(sum, housing) },
+        { name: 'Other services', value: percentage(sum, other) },
       ],
     };
   });
