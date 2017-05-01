@@ -1,4 +1,4 @@
-.HomelessPopulation .homelesspopulation-container {
+.container {
   text-align: center;
   max-width: 95%;
   margin: auto;
@@ -10,11 +10,14 @@
   text-align: center;
 }
 
-.HomelessPopulation .selector {
+.selectContainer {
+  margin-top: 50px;
+  display: flex;
+  margin: 0 30;
   padding-bottom: 13px;
 }
 
-.HomelessPopulation .selector select  {
+.select {
   appearance: none;
   color: #201024;
   background:none;
@@ -62,7 +65,7 @@
 
 .HomelessPopulation .Years-List a.active {
   font-weight: bold;
-  color: #201024; 
+  color: #201024;
 }
 
 .HomelessPopulation .Years-List {
@@ -77,34 +80,3 @@
   color: #201024;
   border-bottom: 3px solid #201024;
 }
-
-
-@media screen and (min-width: 580px) {
-
-  .HomelessPopulation .Years-List ul {
-    justify-content: center!important;
-  }
-
-  .HomelessPopulation .recharts-default-legend {
-    display: flex;
-  }
-
-  .HomelessPopulation .recharts-legend-wrapper {
-    left:20px!important;
-  }
-  
-  .HomelessPopulation .recharts-legend-wrapper li {
-    width: 160px;
-  }
-
-  .HomelessPopulation .selector {
-    text-align: left;
-    padding-left: 20px;
-  }
-
-  .dataViz-container-500 {
-    max-width: 500px;
-  }
-
-}
-
