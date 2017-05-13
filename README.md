@@ -3,7 +3,7 @@
 
 This is a copy of the starter kit for Hack Oregon front-end development using React + Redux.
 
-S3 staging
+S3   staging
 http://hacko-homelessness-staging.s3-website-us-west-2.amazonaws.com/
 
 Travis build
