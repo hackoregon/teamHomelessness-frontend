@@ -43,8 +43,6 @@ class HomelessPopulation extends React.Component {
     return (
       <TitleNav
         title="Does Domestic Violence Drive Homelessness?"
-        prev="/unaccompanied-youth"
-        next="/services211"
       >
         <StoryCard >
           <div className="Women" style={{ marginLeft: '10px', marginRight: '10px', marginTop: '50px' }}>
