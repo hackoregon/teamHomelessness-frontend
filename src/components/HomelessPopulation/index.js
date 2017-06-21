@@ -59,8 +59,6 @@ class HomelessPopulation extends React.Component {
     return (
       <TitleNav
         title="Homeless Population"
-        prev="/definition"
-        next="/migration"
       >
         <StoryCard>
           <div className={styles.container}>

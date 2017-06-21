@@ -23,8 +23,6 @@ const styles = {
 const UnaccompaniedYouth = () => (
   <TitleNav
     title="Unaccompanied Youth—Undercounted?"
-    prev="/migration"
-    next="/women"
   >
     <StoryCard>
       <div style={styles.bodyContainer}>

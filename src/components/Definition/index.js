@@ -52,8 +52,6 @@ class Definition extends React.Component {
     return (
       <TitleNav
         title="What does it mean to be homeless?"
-        prev="/services211"
-        next="/homeless-population"
       >
         <StoryCard>
           <div className="Definition">

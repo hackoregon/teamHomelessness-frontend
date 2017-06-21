@@ -9,8 +9,6 @@ import shared from '../shared.styles';
 const Migration = () => (
   <TitleNav
     title="Homeless Migration"
-    prev="/homeless-population"
-    next="/unaccompanied-youth"
   >
     <StoryCard>
       <div className="Migration">

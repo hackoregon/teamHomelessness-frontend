@@ -15,8 +15,6 @@ class Services211 extends React.Component {
     return (
       <TitleNav
         title="Homelessness Services"
-        prev="/women"
-        next="/definition"
       >
         <StoryCard>
           <p>In 2016 the 211info helpline fielded 6759 calls for services from people who self-identified as homeless. Most of those calls were directed to housing assistance services.</p>
