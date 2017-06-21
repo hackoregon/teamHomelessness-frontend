@@ -13,69 +13,9 @@ export default function createRoutes() {
       name: 'home',
       getComponent(nextState, cb) {
         const renderRoute = loadModule(cb);
-        require.ensure([], require => Promise.resolve(require('./components/Definition'))
+        require.ensure([], require => Promise.resolve(require('./components/CardCollection'))
         .then(renderRoute)
         .catch(errorLoading));
-      },
-    },
-    {
-      path: '/homeless-population',
-      name: 'homelesspopulationpage',
-      getComponent(nextState, cb) {
-        const renderRoute = loadModule(cb);
-        require.ensure([], require => Promise.resolve(require('./components/HomelessPopulation'))
-        .then(renderRoute)
-        .catch(errorLoading));
-      },
-    },
-    {
-      path: '/unaccompanied-youth',
-      name: 'unaccompaniedyouthpage',
-      getComponent(nextState, cb) {
-        const renderRoute = loadModule(cb);
-        require.ensure([], require => Promise.resolve(require('./components/UnaccompaniedYouth'))
-        .then(renderRoute)
-        .catch(errorLoading));
-      },
-    },
-    {
-      path: '/migration',
-      name: 'migrationpage',
-      getComponent(nextState, cb) {
-        const renderRoute = loadModule(cb);
-        require.ensure([], require => Promise.resolve(require('./components/Migration'))
-          .then(renderRoute)
-          .catch(errorLoading));
-      },
-    },
-    {
-      path: '/definition',
-      name: 'definitionpage',
-      getComponent(nextState, cb) {
-        const renderRoute = loadModule(cb);
-        require.ensure([], require => Promise.resolve(require('./components/Definition'))
-          .then(renderRoute)
-          .catch(errorLoading));
-      },
-    },
-    {
-      path: '/women',
-      name: 'womenpage',
-      getComponent(nextState, cb) {
-        const renderRoute = loadModule(cb);
-        require.ensure([], require => Promise.resolve(require('./components/Women'))
-          .then(renderRoute)
-          .catch(errorLoading));
-      },
-    },
-    {
-      path: '/services211',
-      name: 'servicespage',
-      getComponent(nextState, cb) {
-        const renderRoute = loadModule(cb);
-        require.ensure([], require => Promise.resolve(require('./components/Services211'))
-          .then(renderRoute)
-          .catch(errorLoading));
       },
     },
     {
