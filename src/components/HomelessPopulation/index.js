@@ -62,11 +62,11 @@ class HomelessPopulation extends React.Component {
       >
         <StoryCard>
           <div className={styles.container}>
-            <p>
+            <p style={shared.text}>
               The graph below displays the percent of each type of homeless demographic against the same demographic for the general population.
             </p>
 
-            <p>
+            <p style={shared.text}>
               People experiencing homelessness are more likely to be people of color, male, and more likely to have a disabling condition than Multnomah County residents as a whole.
             </p>
             <div className={styles.selectContainer}>

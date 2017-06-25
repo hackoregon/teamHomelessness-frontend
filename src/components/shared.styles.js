@@ -1,6 +1,8 @@
 export default {
   text: {
     textAlign: 'left',
+    color: '#614861',
+    lineHeight: '1.6em',
   },
   header: {
     marginTop: '75px',
