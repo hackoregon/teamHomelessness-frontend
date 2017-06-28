@@ -1,6 +1,6 @@
 import React from 'react';
 import { PieChart, Pie, ResponsiveContainer, Text, Cell, Curve, Legend } from 'recharts';
-import styles from '../Reuseable/ArcPieChart/ArcPieChart.styles.css';
+import styles from '../Reuseable/HalfDonutChart/HalfDonutChart.styles.css';
 
 const propsData = [
   { name: 'Homeless on arrival', value: 12 },

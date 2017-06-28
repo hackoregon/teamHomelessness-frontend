@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
 import { PieChart, Pie, ResponsiveContainer, Text, Cell, Legend } from 'recharts';
-import styles from './ArcPieChart.styles.css';
+import styles from './HalfDonutChart.styles.css';
 
-class ArcPieChart extends React.Component {
+class HalfDonutChart extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -113,13 +113,13 @@ class ArcPieChart extends React.Component {
   }
 }
 
-ArcPieChart.propTypes = {
+HalfDonutChart.propTypes = {
   dataSets: PropTypes.array.isRequired,
   renderLinks: PropTypes.boolean,
 };
 
-ArcPieChart.defaultProps = {
+HalfDonutChart.defaultProps = {
   renderLinks: true,
 };
 
-export default ArcPieChart;
+export default HalfDonutChart;
