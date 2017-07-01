@@ -6,8 +6,13 @@ import UnaccompaniedYouth from '../UnaccompaniedYouth';
 import Women from '../Women';
 import Services211 from '../Services211';
 
+const style = {
+  maxWidth: '800px',
+  margin: '0 auto',
+};
+
 const CardCollection = () => (
-  <div>
+  <div style={style}>
     <Definition />
     <HomelessPopulation />
     <Migration />

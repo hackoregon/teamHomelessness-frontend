@@ -2,7 +2,7 @@ export default {
   text: {
     textAlign: 'left',
     color: '#614861',
-    lineHeight: '1.6em',
+    lineHeight: '1.6',
   },
   header: {
     marginTop: '75px',
@@ -13,8 +13,5 @@ export default {
   footnote: {
     textAlign: 'left',
     fontSize: '15px',
-  },
-  textContainer: {
-    height: '275px',
   },
 };

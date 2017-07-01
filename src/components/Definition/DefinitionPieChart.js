@@ -80,7 +80,7 @@ class DefinitionPieChart extends React.Component {
   render() {
     return (
       <div style={{ marginBottom: '65px' }} >
-        <div className="Definition-container">
+        <div>
           { this.props.data.length > 0 &&
             React.cloneElement(this.props.content[this.state.activeValue],
               { year: this.state.year,
