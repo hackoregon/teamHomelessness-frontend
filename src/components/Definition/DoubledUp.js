@@ -6,7 +6,7 @@ const DoubledUp = (props) => {
 
   return (
     <div>
-      <h2 style={shared.header}>Doubling-Up</h2>
+      <h3 style={shared.header}>Doubling-Up</h3>
       <p style={shared.text}>
         The HUD definition of people experiencing homelessness does not include the majority of people who lack stable housing—people who are temporarily sheltering in basements, spare rooms, or on the couches of friends or relatives, for example.
 

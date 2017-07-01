@@ -6,8 +6,8 @@ const Unsheltered = (props) => {
   const { rawCount, rawTotal } = props.data;
 
   return (
-    <div style={shared.textContainer}>
-      <h2 style={shared.header}>Unsheltered</h2>
+    <div>
+      <h3 style={shared.header}>Unsheltered</h3>
       <p style={shared.text}>
         {year === 2015 &&
           `People are unsheltered when their primary nighttime residence is a public or private space not designed for sleeping—such as a parked car, an abandoned building, or the doorway of a commercial storefront. On the night of January 28, ${year}, ${rawCount.toLocaleString()} of the ${rawTotal.toLocaleString()} who met the HUD definition of homelessness were unsheltered.`
