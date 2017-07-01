@@ -105,7 +105,7 @@ export const compareMigrationApi = () => homelessGet('/migration')
     .then((data) => {
       const formatted = data.map(datum => ({
         name: sentence(datum.migrationarea),
-        value: datum.migrationpercent.toPrecision(1) * 100,
+        value: Math.trunc(datum.migrationpercent * 100),
       }));
       return {
         name: 2015,
