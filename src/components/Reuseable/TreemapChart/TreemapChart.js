@@ -1,13 +1,5 @@
 import React from 'react';
-import { Treemap, ResponsiveContainer, Text } from 'recharts';
-
-const propsData = [
-  { name: 'Other Part of the US', percent: 37 },
-  { name: 'California or Washington', percent: 35 },
-  { name: 'Portland Metro Area', percent: 14 },
-  { name: 'Non-Metro Area', percent: 10 },
-  { name: 'Portland', percent: 4 },
-].sort((a, b) => b.percent - a.percent);
+import { Treemap, ResponsiveContainer } from 'recharts';
 
 const COLORS = ['#75568D', '#e3dde8'];
 
@@ -42,12 +34,12 @@ const Content = (options) => {
   );
 };
 
-const OriginTreemap = props => (
+const TreemapChart = props => (
   <div style={{ marginBottom: '30px' }}>
     <ResponsiveContainer width={'100%'} height={300}>
       <Treemap
-        data={propsData}
-        dataKey="percent"
+        data={props.dataSet}
+        dataKey="value"
         ratio={1 / 1}
         stroke="#fff"
         fill="#75568D"
@@ -57,4 +49,4 @@ const OriginTreemap = props => (
   </div>
 );
 
-export default OriginTreemap;
+export default TreemapChart;

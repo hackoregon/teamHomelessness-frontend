@@ -1,9 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import HalfDonutChart from '../Reuseable/HalfDonutChart/HalfDonutChart';
-import OriginTreemap from './OriginTreemap';
-import { TitleNav } from '../Reuseable';
 import StoryCard from '@hackoregon/component-library/lib/StoryCard/StoryCard';
+import { TitleNav, TreemapChart, HalfDonutChart } from '../Reuseable';
 import shared from '../shared.styles';
 import { fetchMigrationDemoData } from '../../state/Migration/actions';
 
