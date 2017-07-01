@@ -30,6 +30,7 @@ class Migration extends React.Component {
     this.props.loadData();
   }
   render() {
+    const dataLoaded = this.props.migrationData[0];
     return (
       <TitleNav
         title="Homeless Migration"
@@ -45,7 +46,9 @@ class Migration extends React.Component {
               <p style={shared.text}>This number represents the percentage of the unsheltered population that moved to Multnomah County in the two years since the previous PIT survey (i.e. from 2013 to 2015).</p>
               <h2 style={shared.header}>And most of them came from outside the Pacific Northwest</h2>
             </div>
-            <OriginTreemap />
+            { dataLoaded ?
+              <TreemapChart dataSet={this.props.migrationData[0].data} />
+              : null }
             <div>
               <p style={shared.footnote}>*Portland Metro Areas include Clackamas, Washington, and Clark Counties</p>
               <p style={shared.footnote}>*Those who responded Portland migrated from East County.</p>
@@ -63,7 +66,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
-  treeData: [state.migration.migrationDemoData],
+  migrationData: [state.migration.migrationDemoData],
 });
 
 export default connect(

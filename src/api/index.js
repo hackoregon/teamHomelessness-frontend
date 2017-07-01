@@ -106,7 +106,7 @@ export const compareMigrationApi = () => homelessGet('/migration')
       const formatted = data.map(datum => ({
         name: sentence(datum.migrationarea),
         value: Math.trunc(datum.migrationpercent * 100),
-      }));
+      })).sort((a, b) => b.value - a.value);
       return {
         name: 2015,
         data: formatted,
