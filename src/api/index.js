@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { sentence } from 'change-case';
 
 const BASE_URL = 'http://service.civicpdx.org/homeless';
 
@@ -99,3 +100,15 @@ export const compareServiceCallsApi = () => homelessGet('/service211')
       ],
     };
   });
+
+export const compareMigrationApi = () => homelessGet('/migration')
+    .then((data) => {
+      const formatted = data.map(datum => ({
+        name: sentence(datum.migrationarea),
+        value: datum.migrationpercent.toPrecision(1) * 100,
+      }));
+      return {
+        name: 2015,
+        data: formatted,
+      };
+    });

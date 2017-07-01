@@ -27,7 +27,7 @@ const Migration = () => (
     <StoryCard>
       <div className="Migration">
         <div className="migration-container">
-          <h2>Between 2015 and 2017, among the newly arrived unsheltered</h2>
+          <h2>Between 2013 and 2015, among the newly arrived unsheltered</h2>
         </div>
         <HalfDonutChart dataSets={arrivalData} renderLinks={false} legend={false} />
         <div className="migration-container" >
