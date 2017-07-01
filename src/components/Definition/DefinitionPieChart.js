@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { PieChart, Pie, ResponsiveContainer, Text, Cell, Legend } from 'recharts';
 import CustomPieLegend from './CustomPieLegend';
-import styles from '../Reuseable/ArcPieChart/ArcPieChart.styles.css';
+import styles from '../Reuseable/HalfDonutChart/HalfDonutChart.styles.css';
 
 const findPercentage = (val, arr) => {
   const total = arr.reduce((acc, cur) => acc + cur.value, 0);

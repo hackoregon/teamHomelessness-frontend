@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
 import { PieChart, Pie, ResponsiveContainer, Text, Cell, Legend } from 'recharts';
-import styles from './ArcPieChart.styles.css';
+import styles from './HalfDonutChart.styles.css';
 
-class ArcPieChart extends React.Component {
+class HalfDonutChart extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -95,17 +95,18 @@ class ArcPieChart extends React.Component {
               <Cell key={data.name} fill={this.getColor(data.name)} />)
           }
             </Pie>
-            <Legend
-              iconType={'circle'}
-              payload={this.state.selectedSet.data.map(data => ({
-                color: this.getColor(data.name),
-                type: 'circle',
-                value: data.name,
-                name: data.name,
-              }))}
-              wrapperStyle={{ bottom: '-35px' }}
-              onClick={this.selectData}
-            />
+            { this.props.legend ?
+              <Legend
+                iconType={'circle'}
+                payload={this.state.selectedSet.data.map(data => ({
+                  color: this.getColor(data.name),
+                  type: 'circle',
+                  value: data.name,
+                  name: data.name,
+                }))}
+                wrapperStyle={{ bottom: '-35px' }}
+                onClick={this.selectData}
+              /> : null }
           </PieChart>
         </ResponsiveContainer>
       </div>
@@ -113,13 +114,15 @@ class ArcPieChart extends React.Component {
   }
 }
 
-ArcPieChart.propTypes = {
+HalfDonutChart.propTypes = {
   dataSets: PropTypes.array.isRequired,
   renderLinks: PropTypes.boolean,
+  legend: PropTypes.boolean,
 };
 
-ArcPieChart.defaultProps = {
+HalfDonutChart.defaultProps = {
   renderLinks: true,
+  legend: true,
 };
 
-export default ArcPieChart;
+export default HalfDonutChart;

@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import StoryCard from '@hackoregon/component-library/lib/StoryCard/StoryCard';
-import { ArcPieChart, TitleNav, ListBarChart } from '../Reuseable';
+import { HalfDonutChart, TitleNav, ListBarChart } from '../Reuseable';
 import { fetchServiceCallsData } from '../../state/Services211/actions';
 import { compareOtherCallsApi } from '../../api/';
 import shared from '../shared.styles.js';
@@ -18,7 +18,7 @@ class Services211 extends React.Component {
       >
         <StoryCard>
           <p style={shared.text}>In 2016 the 211info helpline fielded 6759 calls for services from people who self-identified as homeless. Most of those calls were directed to housing assistance services.</p>
-          { dataLoaded ? <ArcPieChart
+          { dataLoaded ? <HalfDonutChart
             dataSets={this.props.pieData}
             renderLinks={false}
           /> : null }
