@@ -18,6 +18,8 @@ export const compareEthnicityApi = () => homelessGet('/pitacseth')
         case 'pop_of_color':
           name = 'People of Color';
           break;
+        default:
+          break;
       }
       return {
         name,
@@ -52,6 +54,8 @@ export const compareAgeGenderApi = () => homelessGet('/pitacs')
           break;
         case 'agehousesub18':
           name = 'Under 18';
+          break;
+        default:
           break;
       }
       return {
@@ -89,6 +93,7 @@ export const compareServiceCallsApi = () => homelessGet('/service211')
           value: percentage(sum, datum.freq),
         };
       }
+      return null;
     });
     const otherChart = unsortedChart.sort((a, b) => b.value - a.value);
     return {
