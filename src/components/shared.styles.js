@@ -6,9 +6,11 @@ export default {
   },
   header: {
     marginTop: '75px',
+    textAlign: 'center',
   },
   subHeader: {
     marginTop: '100px',
+    textAlign: 'center',
   },
   footnote: {
     textAlign: 'left',
