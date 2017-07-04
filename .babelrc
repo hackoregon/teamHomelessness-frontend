@@ -1,18 +1,16 @@
 {
   "presets": [
-    "latest",
+    "es2015",
     "react",
-    "stage-0"
+    "stage-1"
   ],
   "env": {
     "development": {
-      "presets": [
-        "react-hmre"
-      ],
-      "plugins": ["transform-class-properties"],
+      "plugins": ["react-hot-loader/babel", "transform-class-properties"],
     },
     "production": {
       "plugins": [
+        "transform-class-properties",
         "transform-react-constant-elements",
         "transform-react-remove-prop-types"
       ]
