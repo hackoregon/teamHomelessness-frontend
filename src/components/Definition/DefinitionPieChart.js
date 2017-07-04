@@ -99,8 +99,8 @@ class DefinitionPieChart extends React.Component {
                   <li className={styles.listItem} key={item} >
                     <a
                       className={`${styles.link} ${active}`}
-                      role="button"
                       onClick={() => this.setState({ year: item })}
+                      role="button"
                     >
                       {item}
                     </a>

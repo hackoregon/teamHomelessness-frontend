@@ -37,11 +37,11 @@ class Migration extends React.Component {
       >
         <div>
           <div>
-            <h3>Between 2013 and 2015,<br />among the newly arrived unsheltered</h3>
+            <h3 style={shared.header}>Between 2013 and 2015,<br />among the newly arrived unsheltered</h3>
           </div>
           <HalfDonutChart dataSets={arrivalData} renderLinks={false} legend={false} />
           <div>
-            <h3>were homeless on arrival</h3>
+            <h3 style={shared.header}>were homeless on arrival</h3>
             <p style={shared.text}>This number represents the percentage of the unsheltered population that moved to Multnomah County in the two years since the previous PIT survey (i.e. from 2013 to 2015).</p>
             <h3 style={shared.header}>And most of them came from outside the Pacific Northwest</h3>
           </div>

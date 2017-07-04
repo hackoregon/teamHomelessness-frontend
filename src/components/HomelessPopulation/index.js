@@ -3,8 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { BarChart, Bar, XAxis, YAxis, Text, Legend, ResponsiveContainer } from 'recharts';
-import camelcase from 'camelcase';
-import StoryCard from '@hackoregon/component-library/lib/StoryCard/StoryCard';
+import { StoryCard, Dropdown } from '@hackoregon/component-library/lib';
 import styles from './styles.css';
 import shared from '../shared.styles';
 
@@ -31,14 +30,14 @@ class HomelessPopulation extends React.Component {
   constructor() {
     super();
     this.state = {
-      categories: [
-        'Ethnicity',
-        'Veteran Status',
-        'Disability',
-        'Age',
-        'Gender',
+      options: [
+        { value: 'ethnicity', label: 'Ethnicity' },
+        { value: 'veteranStatus', label: 'Veteran Status' },
+        { value: 'disability', label: 'Disability' },
+        { value: 'age', label: 'Age' },
+        { value: 'gender', label: 'Gender' },
       ],
-      value: 'Ethnicity',
+      value: 'ethnicity',
       footnote: {
         Ethnicity: 'All race data in this report are presented as an over-count, which means individuals were encouraged to select as many categories of race, ethnicity, or national origin as apply and they were counted within each category. For that reason, the percentages may add up to more than 100.',
         'Veteran Status': 'People who have served in the US military are included in Multnomah county’s homeless population.\nIn 2015, 11% of the homeless have served in the US military. Of those, 39% stayed in transitional housing, 47% were unsheltered and 14% stayed in emergency shelters.',
@@ -51,8 +50,8 @@ class HomelessPopulation extends React.Component {
   componentDidMount() {
     this.props.loadData();
   }
-  handleChange(event) {
-    this.setState({ value: event.target.value });
+  handleChange(option) {
+    this.setState({ value: option.value });
   }
   render() {
     return (
@@ -66,22 +65,16 @@ class HomelessPopulation extends React.Component {
               People experiencing homelessness are more likely to be people of color, male, and more likely to have a disabling condition than Multnomah County residents as a whole.
             </p>
           <div className={styles.selectContainer}>
-            <select
-              className={styles.select}
-              name="category"
+            <Dropdown
+              options={this.state.options}
+              onChange={option => this.handleChange(option)}
               value={this.state.value}
-              onChange={event => this.handleChange(event)}
-            >
-              {
-                  this.state.categories.map(item => (
-                    <option key={item} value={item}>{item}</option>
-                  ))
-                }
-            </select>
+              clearable={false}
+            />
           </div>
           <ResponsiveContainer width="100%" height={'100%'} minHeight={400} >
             <BarChart
-              data={this.props[camelcase(this.state.value)]}
+              data={this.props[this.state.value]}
               layout={'vertical'}
               margin={{ top: 65, right: 10, left: 10, bottom: 0 }}
             >
