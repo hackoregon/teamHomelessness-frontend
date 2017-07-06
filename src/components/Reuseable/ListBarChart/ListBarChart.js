@@ -1,17 +1,18 @@
-import React, { PropTypes } from 'react';
-import { BarChart, Bar, XAxis, YAxis, Legend, ResponsiveContainer, Text } from 'recharts';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Text } from 'recharts';
 
 const tickLabel = (options) => {
   const { payload, x, y } = options;
   return (
-    <Text y={options.y - 22} x={options.x + 5}>{payload.value}</Text>
+    <Text y={y - 22} x={x + 5}>{payload.value}</Text>
   );
 };
 
 const barLabel = (options) => {
   const { payload, x, y } = options;
   return (
-    <Text y={options.y + 5} x={options.x}>{`${payload.value}%`}</Text>
+    <Text y={y + 5} x={x}>{`${payload.value}%`}</Text>
   );
 };
 
@@ -46,5 +47,10 @@ const ListBarChart = props => (
     </BarChart>
   </ResponsiveContainer>
 );
+
+ListBarChart.propTypes = {
+  data: PropTypes.array.isRequired,
+  colors: PropTypes.array.isRequired,
+};
 
 export default ListBarChart;

@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { PieChart, Pie, ResponsiveContainer, Text, Cell, Legend } from 'recharts';
 import styles from './HalfDonutChart.styles.css';
 
@@ -53,27 +54,6 @@ class HalfDonutChart extends React.Component {
   render() {
     return (
       <div className={styles.container} >
-        { this.props.renderLinks ?
-          <div className={styles.yearsContainer}>
-            <ul className={styles.years}>
-              {
-              this.props.dataSets.map((data) => {
-                const name = data.name;
-                const active = name === this.state.selectedSet.name ? styles.linkActive : '';
-                return (
-                  <li className={styles.listItem} key={name}>
-                    <a
-                      className={`${styles.link} ${active}`}
-                      onClick={() => this.selectSet(name)}
-                    >
-                      {name}
-                    </a>
-                  </li>
-                );
-              })
-            }
-            </ul>
-          </div> : null }
         <ResponsiveContainer width={'100%'} height={225}>
           <PieChart
             margin={{ top: 0, right: 5, bottom: 100, left: 5 }}
@@ -116,12 +96,10 @@ class HalfDonutChart extends React.Component {
 
 HalfDonutChart.propTypes = {
   dataSets: PropTypes.array.isRequired,
-  renderLinks: PropTypes.boolean,
   legend: PropTypes.boolean,
 };
 
 HalfDonutChart.defaultProps = {
-  renderLinks: true,
   legend: true,
 };
 

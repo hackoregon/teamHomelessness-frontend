@@ -1,4 +1,7 @@
+/* eslint-disable max-len */
+
 import React from 'react';
+import PropTypes from 'prop-types';
 import shared from '../shared.styles';
 
 const Unsheltered = (props) => {
@@ -29,5 +32,9 @@ const Unsheltered = (props) => {
   );
 };
 
+Unsheltered.propTypes = {
+  data: PropTypes.object.isRequired,
+  year: PropTypes.number.isRequired,
+};
 
 export default Unsheltered;

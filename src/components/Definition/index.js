@@ -65,10 +65,12 @@ class Definition extends React.Component {
           <div className="Definition-container">
             <h3 style={shared.subHeader}>Not Quite Apples-to-Apples</h3>
             <p style={shared.footnote}>
-            The services people experiencing homelessness need are varied and change over time.
-            In response, so do the services provided and the policies guiding them. For example, an emergency shelter that
-            expands its services to meet new local demands or align with new policy goals may be reclassified as transitional housing in subsequent years.
-            This means that the numbers of people in each category are not strictly comparable across years, even as they reveal useful information about local needs and capacity.
+              The services people experiencing homelessness need are varied and change over time. In
+              response, so do the services provided and the policies guiding them. For example, an
+              emergency shelter that expands its services to meet new local demands or align with
+              new policy goals may be reclassified as transitional housing in subsequent years. This
+              means that the numbers of people in each category are not strictly comparable across
+              years, even as they reveal useful information about local needs and capacity.
             </p>
           </div>
           <div className="Definition-container top-spacer" >
