@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 import { PieChart, Pie, ResponsiveContainer, Text, Cell, Legend } from 'recharts';
-import styles from './ArcPieChart.styles.css';
 
 class ArcPieChart extends React.Component {
   constructor(props) {

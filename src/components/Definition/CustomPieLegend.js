@@ -17,7 +17,6 @@ const CustomPieLegend = (options) => {
               key={entry.value}
               style={styles}
               className={`recharts-legend-item legend-item-${index} ${active}`}
-              onClick={() => options.updateCategory(entry.value)}
               role="button"
             >
               <svg className="recharts-surface" width={options.iconSize} height={options.iconSize} viewBox="0 0 32 32" version="1.1" style={styles}>

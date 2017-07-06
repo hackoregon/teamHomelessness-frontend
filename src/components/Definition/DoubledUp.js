@@ -1,4 +1,7 @@
+/* eslint-disable max-len */
+
 import React from 'react';
+import PropTypes from 'prop-types';
 import shared from '../shared.styles';
 
 const DoubledUp = (props) => {
@@ -30,5 +33,8 @@ const DoubledUp = (props) => {
   );
 };
 
+DoubledUp.propTypes = {
+  year: PropTypes.number.isRequired,
+};
 
 export default DoubledUp;

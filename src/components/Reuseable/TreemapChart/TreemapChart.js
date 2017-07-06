@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Treemap, ResponsiveContainer } from 'recharts';
 
 const COLORS = ['#75568D', '#e3dde8'];
@@ -48,5 +49,9 @@ const TreemapChart = props => (
     </ResponsiveContainer>
   </div>
 );
+
+TreemapChart.propTypes = {
+  dataSet: PropTypes.array.isRequired,
+};
 
 export default TreemapChart;
