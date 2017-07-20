@@ -1,4 +1,3 @@
-
 ## Hack OR Team Homeless Front-End
 
 This is a copy of the starter kit for Hack Oregon front-end development using React + Redux.
